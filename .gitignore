@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+desktop.ini
+.vercel/
+
+# helper batch files I generated for the Cowork workflow
+push-to-github.bat
+deploy-vercel.bat
+open-site.bat
+open-repo.bat

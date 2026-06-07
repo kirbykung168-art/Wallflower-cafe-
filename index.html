@@ -1,0 +1,1348 @@
+<!doctype html>
+<html lang="en" data-mode="day">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0F0C18" />
+<title>Wallflowers Cafe — by day, by night · Soi Nana, Bangkok</title>
+<meta name="description" content="A pair of vintage shophouses on Soi Nana. Cafe by day (10:00–18:00), bar by night (17:30–00:00). Signature Le Boissom De Kanda, Dark Beer Cake, ROSY STRAIGHT BLUSH cocktail. Reserve via LINE." />
+
+<!--
+========================================================================
+WALLFLOWERS CAFE · BANGKOK
+31-33 Soi Nana, Pom Prap, Bangkok 10100  ·  cafe@wallflowersth.com  ·  094 671 4433
+========================================================================
+
+BRAND BRIEF (verified content-first synthesis)
+Wallflowers began in June 2016 as Oneday Wallflowers — the second florist
+outpost of Bangkok specialty-coffee group Casa Lapin — opened inside a pair
+of vintage shophouses at 31-33 Soi Nana ("what used to be the charming Pure
+Luck kombucha brewery", BK Magazine 2016). It grew upward through the
+building: a flower-and-cake cafe on the middle floors, then Wallflowers
+Upstairs rooftop bar in early 2018 with Garden-of-Eden-themed cocktails
+reached via "a creaky wooden staircase" spiral. By late 2024 the florist
+downstairs has folded into the cafe (Wongnai reviewer NanNan, Oct 2024).
+
+VERIFIED SIGNATURES — cafe: Le Boissom De Kanda 250฿ (Signature Drink Award
+2016), Dark Beer Cake 260฿ (Wongnai #1), Tamarind Coffee 250฿, Filter Coffee
+250฿, Thai Style/Americano/Thai Tea 150฿, Latte 130฿, cake slices from 150฿.
+VERIFIED SIGNATURES — Upstairs: EDEN (Hendrick's, Aperol, elderflower,
+lychee, lemon), ROSY STRAIGHT BLUSH (vodka, Aperol, watermelon, passion-
+fruit, yuzu, vanilla), LOUISE (Bulleit rye, Martini Bianco, ginger, Fuji
+apple), NEGRONI.
+
+VOICE — soft-spoken and literary by day (the Perks-of-Being-a-Wallflower
+pun is owned), candlelit and convivial by night, vinyl jazz/RnB Fri & Sat.
+CUSTOMER — design-literate Bangkokian or in-the-know visitor who came for
+Yaowarat street food and climbs one more floor.
+
+INSPIRATION (motion + voice references):
+- https://www.awwwards.com/sites/uve-rooms-and-wine-bar  (warm cream + serif rhythm)
+- https://www.awwwards.com/sites/vollerei-restaurant-bar  (restaurant/bar dual identity)
+- https://www.awwwards.com/inspiration/day-and-night-mode-schumacher-house  (day↔night toggle gesture)
+
+PRIMARY CTA — Reserve via LINE: https://lin.ee/ME6TMdA
+========================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter+Tight:wght@400;500;600;700&family=Noto+Serif+Thai:wght@400;500;600&family=Caveat:wght@400;600&display=swap" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          // Day palette — pressed-flower parchment / sunlit
+          cream:      { 50:'#FAF4E2', 100:'#F4ECD8', 200:'#EADFC2', 300:'#D9C8A4' },
+          ink:        { 700:'#3A2A20', 800:'#2C1F18', 900:'#1B130E' },
+          gold:       { 100:'#EDDDA2', 300:'#D4B86A', 500:'#B89A4A', 700:'#8A7330' },
+          botanical:  { 300:'#9DB28C', 500:'#5C6E4B', 700:'#3A4A2E', 900:'#1F2A18' },
+          rose:       { 300:'#D9B8B4', 500:'#C19B96', 700:'#A07775' },
+          // Night palette — candlelit / midnight ink
+          midnight:   { 700:'#1A1428', 800:'#13101E', 900:'#0F0C18', 950:'#080611' },
+          brass:      { 300:'#E0B65E', 500:'#D4A84A', 700:'#A87E27' },
+        },
+        fontFamily: {
+          display: ['"Cormorant Garamond"','Georgia','serif'],
+          body:    ['"EB Garamond"','Georgia','serif'],
+          sans:    ['"Inter Tight"','system-ui','sans-serif'],
+          thai:    ['"Noto Serif Thai"','serif'],
+          hand:    ['"Caveat"','cursive'],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+:root {
+  --gutter: clamp(20px, 4vw, 44px);
+  --max-w: 76rem;
+
+  /* Day defaults */
+  --bg: #F4ECD8;
+  --bg-2: #FAF4E2;
+  --ink: #2C1F18;
+  --ink-soft: #5A4232;
+  --ink-faint: #8B7560;
+  --accent: #B89A4A;            /* aged gold */
+  --accent-soft: #EDDDA2;
+  --accent-strong: #8A7330;
+  --botanical: #3A4A2E;
+  --botanical-soft: #5C6E4B;
+  --rose: #C19B96;
+  --surface: #FAF4E2;
+  --border: rgba(58,42,30,0.16);
+  --shadow: 0 1px 1px rgba(58,42,30,0.04), 0 8px 24px -12px rgba(58,42,30,0.22);
+  --sky: linear-gradient(180deg, #EFE0B0 0%, #F4ECD8 40%, #EADFC2 100%);
+  --hero-tint: linear-gradient(180deg, rgba(31,42,24,0.35) 0%, rgba(31,42,24,0.55) 55%, rgba(20,12,8,0.78) 100%);
+  --hero-text: #F4ECD8;
+  --hero-text-soft: rgba(244,236,216,0.86);
+  --paper-noise-opacity: 0.20;
+  --paper-noise-mix: multiply;
+  --body-weight: 400;
+  --wordmark-fill: #EDDDA2;
+  --wordmark-stroke: #F4ECD8;
+}
+html[data-mode="night"] {
+  --bg: #0F0C18;
+  --bg-2: #13101E;
+  --ink: #F4ECD8;
+  --ink-soft: #D9C8A4;
+  --ink-faint: #9C8B6E;
+  --accent: #D4A84A;            /* candle gold */
+  --accent-soft: #6B4E1A;
+  --accent-strong: #E0B65E;
+  --botanical: #5C6E4B;
+  --botanical-soft: #9DB28C;
+  --rose: #B07F7C;
+  --surface: #1A1428;
+  --border: rgba(212,168,74,0.20);
+  --shadow: 0 1px 1px rgba(0,0,0,0.40), 0 12px 32px -10px rgba(0,0,0,0.66);
+  --sky: linear-gradient(180deg, #1F1633 0%, #0F0C18 45%, #080611 100%);
+  --hero-tint: linear-gradient(180deg, rgba(15,12,24,0.45) 0%, rgba(15,12,24,0.60) 55%, rgba(8,6,17,0.88) 100%);
+  --hero-text: #F4ECD8;
+  --hero-text-soft: rgba(244,236,216,0.86);
+  --paper-noise-opacity: 0.10;
+  --paper-noise-mix: screen;
+  --body-weight: 450;
+  --wordmark-fill: #D4A84A;
+  --wordmark-stroke: #E0B65E;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  color: var(--ink);
+  background: var(--bg);
+  font-weight: var(--body-weight);
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "onum" 1;
+  hanging-punctuation: first last;
+  transition: background-color 1200ms ease, color 1200ms ease;
+}
+h1,h2,h3,h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  line-height: 1.05;
+}
+em, .italic-display { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; }
+.thai { font-family: 'Noto Serif Thai', serif; }
+.hand { font-family: 'Caveat', cursive; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.28em; font-size: 11px; font-weight: 600; font-family: 'Inter Tight', sans-serif; color: var(--accent-strong); }
+.smallcaps { font-variant-caps: all-small-caps; letter-spacing: 0.12em; }
+.serif-num { font-feature-settings: "onum" 1, "lnum" 0; }
+
+/* Paper / candle noise texture */
+.grain::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  opacity: var(--paper-noise-opacity); mix-blend-mode: var(--paper-noise-mix);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.27 0 0 0 0 0.17 0 0 0 0 0.08 0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Sky gradient layer behind hero */
+.sky { background: var(--sky); transition: background 1200ms ease; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 22px; border-radius: 999px;
+  font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 15px;
+  text-decoration: none; cursor: pointer; border: 0; white-space: nowrap; letter-spacing: 0.005em;
+  transition: transform 320ms cubic-bezier(0.22,1,0.36,1), box-shadow 320ms ease, background-color 320ms ease, color 320ms ease, border-color 320ms ease;
+}
+.btn-lg { padding: 18px 28px; font-size: 16px; }
+.btn-primary {
+  background: var(--accent); color: var(--ink);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.20) inset, 0 12px 26px -10px rgba(184,154,74,0.55), 0 2px 6px rgba(138,115,48,0.30);
+}
+html[data-mode="night"] .btn-primary { color: #0F0C18; }
+.btn-primary:hover { background: var(--accent-strong); transform: translateY(-1px); color: #FAF4E2; }
+html[data-mode="night"] .btn-primary:hover { background: var(--accent-strong); color: #0F0C18; }
+.btn-primary:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+
+.btn-ghost {
+  background: transparent; color: var(--ink);
+  border: 1.5px solid var(--border);
+}
+.btn-ghost:hover { background: var(--border); border-color: var(--ink); transform: translateY(-1px); }
+.btn-ghost:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.btn .arrow { transition: transform 320ms cubic-bezier(0.22,1,0.36,1); }
+.btn:hover .arrow { transform: translateX(5px); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* Section container helper */
+.wrap { max-width: var(--max-w); margin-left: auto; margin-right: auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+
+/* === Day/Night TOGGLE === */
+.mode-toggle {
+  position: relative; display: inline-flex; align-items: center; gap: 6px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
+  padding: 4px; cursor: pointer;
+  transition: background 600ms ease, border-color 600ms ease;
+}
+.mode-toggle__pill {
+  position: absolute; top: 4px; left: 4px; width: calc(50% - 4px); height: calc(100% - 8px);
+  background: var(--accent); border-radius: 999px;
+  transition: transform 600ms cubic-bezier(0.65,0,0.35,1);
+  z-index: 0;
+}
+html[data-mode="night"] .mode-toggle__pill { transform: translateX(100%); }
+.mode-toggle__btn {
+  position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 12px; border-radius: 999px; border: 0; background: transparent; cursor: pointer;
+  font-family: 'Inter Tight', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft);
+  transition: color 600ms ease;
+}
+.mode-toggle__btn[aria-pressed="true"] { color: var(--ink); }
+html[data-mode="night"] .mode-toggle__btn[aria-pressed="true"] { color: #0F0C18; }
+.mode-toggle__btn svg { width: 14px; height: 14px; }
+
+/* === Wordmark SVG ink-bleed === */
+.wordmark { width: 100%; max-width: 920px; height: auto; }
+.wordmark .stroke { fill: none; stroke: var(--wordmark-stroke); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 1600; stroke-dashoffset: 1600;
+  filter: url(#inkbleed);
+  transition: stroke 800ms ease;
+}
+.wordmark.is-revealed .stroke {
+  stroke-dashoffset: 0;
+  fill: var(--wordmark-fill);
+  fill-opacity: 0;
+}
+.wordmark .fill { fill: var(--wordmark-fill); opacity: 0; transition: fill 800ms ease; }
+.wordmark.is-revealed .fill { opacity: 1; transition: opacity 1100ms ease 900ms, fill 800ms ease; }
+/* Fallback: if JS hasn't run, still show the fill */
+.no-js .wordmark .fill, html:not(.js-ready) .wordmark .fill { opacity: 1; }
+.wordmark text.fill {
+  paint-order: stroke; stroke: rgba(0,0,0,0.45); stroke-width: 0.6;
+}
+
+/* === Hero floating petals === */
+.petal { position: absolute; pointer-events: none; will-change: transform; opacity: .80; }
+
+/* === Cursor petal (trail) === */
+.cursor-petal { position: fixed; top: 0; left: 0; pointer-events: none; will-change: transform, opacity; z-index: 80; mix-blend-mode: multiply; }
+html[data-mode="night"] .cursor-petal { mix-blend-mode: screen; }
+@media (hover: none) { .cursor-petal { display: none !important; } }
+
+/* === Breathing italic === */
+.breath { display: inline-block; transform-origin: center; animation: breath 5.4s ease-in-out infinite; }
+@keyframes breath { 0%,100% { transform: scale(1); } 50% { transform: scale(1.014); } }
+
+/* === Drop cap === */
+.dropcap::first-letter {
+  font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
+  float: left; font-size: 5.2em; line-height: 0.88;
+  padding: 0.08em 0.10em 0 0; margin-top: 0.06em;
+  color: var(--accent-strong);
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-strong) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  font-style: italic;
+}
+
+/* === Menu card (worn paper) === */
+.menu-card {
+  position: relative; padding: 24px 24px 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  transition: transform 360ms cubic-bezier(0.22,1,0.36,1), box-shadow 360ms ease, border-color 360ms ease;
+}
+.menu-card::before {
+  content:''; position:absolute; inset:0; border-radius:6px; pointer-events:none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.27 0 0 0 0 0.17 0 0 0 0 0.08 0 0 0 0.30 0'/></filter><rect width='100%25' height='100%25' filter='url(%23p)'/></svg>");
+  opacity: 0.10; mix-blend-mode: multiply; border-radius: 6px;
+}
+html[data-mode="night"] .menu-card::before { mix-blend-mode: screen; opacity: 0.06; }
+.menu-card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 2px 4px rgba(0,0,0,0.06), 0 24px 44px -20px rgba(184,154,74,0.40); }
+.menu-card h3 { color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 22px; line-height: 1.15; }
+.menu-card h3 .underline-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px; background-repeat: no-repeat; background-position: left 100%;
+  transition: background-size 480ms cubic-bezier(0.22,1,0.36,1);
+  padding-bottom: 2px;
+}
+.menu-card:hover h3 .underline-draw { background-size: 100% 1px; }
+.menu-card .price {
+  display: inline-block; font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 14px;
+  color: var(--ink); background: var(--accent-soft);
+  border: 1px solid var(--accent); border-radius: 999px; padding: 2px 12px; letter-spacing: .02em;
+  transition: transform 360ms cubic-bezier(0.22,1,0.36,1);
+}
+.menu-card:hover .price { transform: translateY(-2px); }
+.menu-card p { font-family: 'EB Garamond', serif; font-size: 16px; line-height: 1.5; color: var(--ink-soft); margin-top: 8px; }
+.menu-card .desc-thai { font-family: 'Noto Serif Thai', serif; font-size: 14px; color: var(--ink-faint); margin-top: 2px; display: block; }
+
+/* Wax-seal stamp on signatures */
+.wax-seal {
+  position: absolute; top: -14px; right: -10px; width: 56px; height: 56px; transform: rotate(-12deg);
+  filter: drop-shadow(0 4px 6px rgba(120,40,30,0.4));
+  pointer-events: none;
+}
+
+/* Cocktail glow on hover in night mode */
+html[data-mode="night"] .menu-card.is-bar { background: rgba(26,20,40,0.55); }
+html[data-mode="night"] .menu-card.is-bar::after {
+  content:''; position: absolute; inset: -20px; border-radius: 16px; pointer-events: none;
+  background: radial-gradient(420px 220px at 30% 50%, rgba(212,168,74,0.18), transparent 60%);
+  opacity: 0; transition: opacity 480ms ease;
+}
+html[data-mode="night"] .menu-card.is-bar:hover::after { opacity: 1; }
+
+/* Polaroid scrapbook */
+.polaroid {
+  position: relative; padding: 12px 12px 38px; background: var(--bg-2);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transform-origin: center; will-change: transform;
+  transition: transform 540ms cubic-bezier(0.22,1,0.36,1), box-shadow 540ms ease;
+}
+.polaroid img { display: block; width: 100%; height: 260px; object-fit: cover; background: var(--ink-faint); }
+.polaroid figcaption {
+  position: absolute; left: 18px; bottom: 8px; font-family: 'Caveat', cursive; font-size: 18px;
+  color: var(--ink-soft); line-height: 1.1;
+}
+.polaroid .washi {
+  position: absolute; width: 64px; height: 18px; opacity: 0.78;
+  background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.18) 0 2px, transparent 2px 8px);
+  background-color: var(--rose);
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+}
+.polaroid .washi.tl { top: -7px; left: 14px; transform: rotate(-18deg); }
+.polaroid .washi.tr { top: -7px; right: 14px; transform: rotate(14deg); background-color: var(--botanical-soft); }
+.polaroid:hover { transform: translateY(-6px) rotate(var(--rot,0deg)) scale(1.02); box-shadow: 0 2px 4px rgba(0,0,0,0.08), 0 24px 38px -16px rgba(0,0,0,0.30); }
+
+/* RSVP letter card */
+.rsvp {
+  position: relative; padding: clamp(28px,4vw,56px) clamp(24px,4vw,52px);
+  background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+  border: 1px solid var(--border); border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.04), 0 30px 60px -28px rgba(0,0,0,0.40);
+}
+.rsvp::before {
+  content:''; position:absolute; inset:8px; border:0.75px solid var(--accent); border-radius: 3px; pointer-events:none;
+  opacity: 0.55;
+}
+.rsvp h2 { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500;
+  font-size: clamp(34px, 5.6vw, 64px); color: var(--accent-strong); text-align: center; margin-bottom: .4em; letter-spacing: -.01em; }
+.rsvp p.intro { text-align: center; font-family: 'EB Garamond', serif; font-size: clamp(17px,1.8vw,21px); color: var(--ink-soft); line-height: 1.6; }
+
+/* Status / hours strip */
+.status-dot::before { content:''; width:8px; height:8px; border-radius:50%; background: var(--ink-faint); box-shadow: 0 0 0 4px rgba(165,154,142,.20); display:inline-block; margin-right:8px; vertical-align:1px; }
+.status-dot.is-open::before { background:#7CB67C; box-shadow:0 0 0 4px rgba(124,182,124,.30); }
+.status-dot.is-closed::before { background: var(--rose); box-shadow:0 0 0 4px rgba(193,155,150,.30); }
+
+/* Candle flicker */
+.candle { position: absolute; right: 24px; bottom: 24px; opacity: 0; transition: opacity 1200ms ease; pointer-events: none; }
+html[data-mode="night"] .candle { opacity: 0.95; }
+.candle .flame { transform-origin: center bottom; animation: flicker 2.4s ease-in-out infinite; filter: drop-shadow(0 0 12px rgba(212,168,74,0.85)); }
+@keyframes flicker {
+  0%,100% { transform: rotate(-1deg) scale(1, 1); opacity: 1; }
+  20%     { transform: rotate(2deg)  scale(1.03, 0.97); opacity: .94; }
+  40%     { transform: rotate(-2deg) scale(0.97, 1.05); opacity: 1; }
+  60%     { transform: rotate(1deg)  scale(1.05, 0.95); opacity: .92; }
+  80%     { transform: rotate(-1deg) scale(1, 1.02); opacity: 1; }
+}
+
+/* Sticky CTA mobile */
+.sticky-cta { position: fixed; left: 14px; right: 14px; bottom: 14px; z-index: 70; display: none;
+  align-items: center; justify-content: space-between; padding: 14px 22px;
+  background: var(--accent); color: var(--ink); border-radius: 999px; text-decoration: none; font-weight: 600;
+  box-shadow: 0 10px 30px rgba(184,154,74,0.45); }
+html[data-mode="night"] .sticky-cta { color: #0F0C18; }
+@media (max-width: 720px) { .sticky-cta { display: flex; } body { padding-bottom: 80px; } }
+
+/* Reveal-on-scroll baseline — only when JS has registered ScrollTrigger; otherwise stay visible */
+html.js-ready .reveal { opacity: 0; transform: translateY(20px); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+  html.js-ready .reveal { opacity: 1; transform: none; }
+}
+
+/* Gallery grid layout */
+.scrapbook { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 28px; }
+
+/* Vine SVG container */
+.vine-wrap { position: absolute; top: 0; bottom: 0; left: -10px; width: 80px; pointer-events: none; z-index: 1; opacity: 0.65; }
+@media (max-width: 760px) { .vine-wrap { display: none; } }
+
+/* Quote pull */
+blockquote.pull { position: relative; padding: 6px 0 6px 24px; border-left: 2px solid var(--accent); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(20px, 2.4vw, 28px); line-height: 1.35; color: var(--ink); }
+
+/* Easter-egg petal */
+.bloom-petal { position: fixed; right: 24px; bottom: 24px; z-index: 90; pointer-events: none; opacity: 0; transform: translateY(40px) scale(0.4) rotate(-20deg); transition: opacity 900ms ease, transform 1400ms cubic-bezier(0.22,1,0.36,1); }
+.bloom-petal.is-blooming { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+
+/* Hide things in the wrong mode */
+[data-show="day"]   { display: block; }
+[data-show="night"] { display: none; }
+html[data-mode="night"] [data-show="day"]   { display: none; }
+html[data-mode="night"] [data-show="night"] { display: block; }
+
+[data-text="day"]   { display: inline; }
+[data-text="night"] { display: none; }
+html[data-mode="night"] [data-text="day"]   { display: none; }
+html[data-mode="night"] [data-text="night"] { display: inline; }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- Inline SVG defs for ink-bleed filter, petals, wax seal, candle -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="inkbleed" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="0.6" result="blur"/>
+      <feComponentTransfer in="blur" result="bleed"><feFuncA type="gamma" amplitude="1.2" exponent="0.6"/></feComponentTransfer>
+      <feMerge><feMergeNode in="bleed"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <symbol id="petalShape" viewBox="0 0 40 60">
+      <path d="M20 2 C 34 14, 36 38, 20 58 C 4 38, 6 14, 20 2 Z" fill="currentColor"/>
+      <path d="M20 6 L20 54" stroke="rgba(0,0,0,0.25)" stroke-width="0.6"/>
+    </symbol>
+
+    <symbol id="daisyShape" viewBox="0 0 60 60">
+      <g transform="translate(30 30)">
+        <g fill="currentColor">
+          <ellipse cx="0" cy="-22" rx="6" ry="14"/>
+          <ellipse cx="0" cy="-22" rx="6" ry="14" transform="rotate(45)"/>
+          <ellipse cx="0" cy="-22" rx="6" ry="14" transform="rotate(90)"/>
+          <ellipse cx="0" cy="-22" rx="6" ry="14" transform="rotate(135)"/>
+          <ellipse cx="0" cy="-22" rx="6" ry="14" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-22" rx="6" ry="14" transform="rotate(225)"/>
+          <ellipse cx="0" cy="-22" rx="6" ry="14" transform="rotate(270)"/>
+          <ellipse cx="0" cy="-22" rx="6" ry="14" transform="rotate(315)"/>
+        </g>
+        <circle r="9" fill="#D4A84A"/>
+      </g>
+    </symbol>
+
+    <symbol id="moonShape" viewBox="0 0 24 24">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/>
+    </symbol>
+    <symbol id="sunShape" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+        <circle cx="12" cy="12" r="4" fill="currentColor"/>
+        <line x1="12" y1="2" x2="12" y2="4"/>
+        <line x1="12" y1="20" x2="12" y2="22"/>
+        <line x1="2" y1="12" x2="4" y2="12"/>
+        <line x1="20" y1="12" x2="22" y2="12"/>
+        <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/>
+        <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
+        <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/>
+        <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- =========================== HEADER =========================== -->
+<header class="sticky top-0 z-50 backdrop-blur-md" style="background:color-mix(in srgb, var(--bg) 86%, transparent); border-bottom:1px solid var(--border);">
+  <div class="wrap flex items-center gap-4 py-3.5">
+    <a href="#top" class="flex items-center gap-3 no-underline" style="color: var(--ink);">
+      <svg viewBox="0 0 48 48" width="34" height="34" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="0.6"/>
+        <use href="#daisyShape" x="6" y="6" width="36" height="36" style="color: var(--accent);"/>
+      </svg>
+      <span class="font-display text-[20px] leading-none" style="letter-spacing:.02em; font-weight:600;">Wallflowers</span>
+    </a>
+    <nav class="ml-auto hidden lg:flex gap-7 text-[15px] font-sans" aria-label="Sections">
+      <a href="#manifesto" class="no-underline hover:opacity-70" style="color: var(--ink);">Manifesto</a>
+      <a href="#menu" class="no-underline hover:opacity-70" style="color: var(--ink);"><span data-text="day">Cafe</span><span data-text="night">Bar</span></a>
+      <a href="#gallery" class="no-underline hover:opacity-70" style="color: var(--ink);">Scrapbook</a>
+      <a href="#visit" class="no-underline hover:opacity-70" style="color: var(--ink);">Visit</a>
+    </nav>
+    <div class="mode-toggle ml-auto lg:ml-4" role="group" aria-label="Day or night mode">
+      <span class="mode-toggle__pill" aria-hidden="true"></span>
+      <button class="mode-toggle__btn" data-mode-btn="day" aria-pressed="true" aria-label="Switch to day / cafe mode">
+        <svg aria-hidden="true"><use href="#sunShape"/></svg><span>Cafe</span>
+      </button>
+      <button class="mode-toggle__btn" data-mode-btn="night" aria-pressed="false" aria-label="Switch to night / bar mode">
+        <svg aria-hidden="true"><use href="#moonShape"/></svg><span>Bar</span>
+      </button>
+    </div>
+    <a class="btn btn-primary hidden md:inline-flex" style="padding:10px 16px;font-size:14px;" href="https://lin.ee/ME6TMdA" target="_blank" rel="noopener" data-cta="nav-reserve">
+      Reserve <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- =========================== HERO =========================== -->
+<section class="relative isolate overflow-hidden" style="min-height: 92vh;">
+  <!-- Sky gradient -->
+  <div class="absolute inset-0 sky -z-20" aria-hidden="true"></div>
+  <!-- Photo backdrop -->
+  <div class="absolute inset-0 -z-10" aria-hidden="true">
+    <!-- src: https://danielfooddiary.com/wp-content/uploads/2019/11/wallflower2.jpg via Wongnai pair (verified by sitewide Wallflowers feature, day-mode hero) -->
+    <img data-show="day"   src="images/wn-interior-vintage.jpg" alt="" class="w-full h-full object-cover" style="filter:saturate(0.92) contrast(1.06) brightness(0.92); object-position: center 55%;" loading="eager" fetchpriority="high"/>
+    <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-10r.jpg (verified Wallflowers Upstairs feature, Dec 2019) -->
+    <img data-show="night" src="images/night-rooftop.jpg"     alt="" class="w-full h-full object-cover" style="filter:saturate(0.95) contrast(1.06); object-position: center 55%;" loading="eager"/>
+    <div class="absolute inset-0" style="background: var(--hero-tint); transition: background 1200ms ease;"></div>
+  </div>
+
+  <!-- Floating petals (parallax) -->
+  <div class="absolute inset-0 -z-5 pointer-events-none" id="heroPetals" aria-hidden="true">
+    <svg class="petal" data-depth="0.15" style="top:8%; left:6%;  width:42px; color: var(--rose); transform: rotate(-20deg);"><use href="#petalShape"/></svg>
+    <svg class="petal" data-depth="0.32" style="top:14%; right:8%; width:58px; color: var(--accent); transform: rotate(18deg);"><use href="#petalShape"/></svg>
+    <svg class="petal" data-depth="0.22" style="top:46%; left:12%; width:36px; color: var(--botanical-soft); transform: rotate(40deg);"><use href="#petalShape"/></svg>
+    <svg class="petal" data-depth="0.42" style="bottom:18%; left:35%; width:64px; color: var(--rose); transform: rotate(-12deg);"><use href="#petalShape"/></svg>
+    <svg class="petal" data-depth="0.28" style="bottom:24%; right:14%; width:48px; color: var(--accent-soft); transform: rotate(28deg);"><use href="#petalShape"/></svg>
+  </div>
+
+  <!-- Hero content -->
+  <div class="relative wrap pt-24 pb-24 lg:pt-32 lg:pb-28" style="color: var(--hero-text);">
+    <p class="eyebrow mb-5" style="color: var(--wordmark-fill);">31–33 Soi Nana · Bangkok</p>
+
+    <!-- INK-BLEED WORDMARK -->
+    <svg class="wordmark mb-7" viewBox="0 0 920 220" aria-label="Wallflowers Cafe">
+      <text class="fill" x="460" y="120" text-anchor="middle"
+        font-family="Cormorant Garamond, serif" font-style="italic" font-weight="500"
+        font-size="160" letter-spacing="-3">Wallflowers</text>
+      <text class="stroke" x="460" y="120" text-anchor="middle"
+        font-family="Cormorant Garamond, serif" font-style="italic" font-weight="500"
+        font-size="160" letter-spacing="-3">Wallflowers</text>
+      <text class="fill" x="460" y="180" text-anchor="middle"
+        font-family="Inter Tight, sans-serif" font-weight="500"
+        font-size="22" letter-spacing="16" fill="currentColor">CAFE  ·  UPSTAIRS BAR</text>
+    </svg>
+
+    <p class="max-w-2xl mb-7 text-[19px] md:text-[21px] leading-relaxed" style="color: var(--hero-text-soft); font-family:'EB Garamond',serif; text-shadow: 0 2px 12px rgba(0,0,0,0.55);">
+      <span data-text="day">A pair of vintage shophouses on Soi Nana, perfumed with dried flowers and edible petals on every cake. Coffee from <em>10 in the morning</em> until the lamps come on.</span>
+      <span data-text="night">A creaky wooden staircase rises through three floors to a rooftop garden over Chinatown. Garden-of-Eden cocktails, vinyl on Fridays and Saturdays, <em>open until midnight</em>.</span>
+    </p>
+
+    <p class="mb-9 italic-display text-[clamp(22px,2.6vw,30px)]" style="color: var(--wordmark-fill); font-weight:500; text-shadow: 0 2px 14px rgba(0,0,0,0.55);">
+      A cafe by day, <span class="breath">a bar by night.</span>
+    </p>
+
+    <div class="flex flex-wrap gap-3 mb-9">
+      <a class="btn btn-primary btn-lg" target="_blank" rel="noopener" href="https://lin.ee/ME6TMdA" data-cta="hero-reserve">
+        <span>Reserve a table</span><span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="btn btn-ghost btn-lg" href="#menu" data-cta="hero-menu">
+        <span data-text="day">See the cafe menu</span><span data-text="night">See the bar menu</span>
+      </a>
+    </div>
+
+    <!-- Social proof -->
+    <div class="inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-full px-5 py-3 text-[14px]"
+         style="background: rgba(15,12,24,0.45); backdrop-filter: blur(8px); border:1px solid rgba(244,236,216,0.20); color: rgba(244,236,216,0.80); font-family:'Inter Tight',sans-serif;">
+      <span><strong style="color: var(--hero-text);">92%</strong> recommend</span>
+      <span class="opacity-50">·</span>
+      <span><strong style="color: var(--hero-text);">1,294</strong> Facebook reviews</span>
+      <span class="opacity-50">·</span>
+      <span><strong style="color: var(--hero-text);">33K</strong> followers</span>
+      <span class="opacity-50 hidden md:inline">·</span>
+      <span class="hidden md:inline italic-display" style="color: var(--hero-text); font-style:italic;">"hip hangout for the young &amp; beautiful"<span class="ml-1 opacity-60" style="font-style:normal;">— Tripadvisor</span></span>
+    </div>
+    <p id="liveStatus" class="mt-5 inline-flex items-center text-sm status-dot" aria-live="polite" style="color: var(--hero-text-soft); font-family:'Inter Tight',sans-serif; text-shadow: 0 1px 6px rgba(0,0,0,0.4);">Checking the hour in Bangkok…</p>
+  </div>
+
+  <!-- Candle in night-mode -->
+  <div class="candle" aria-hidden="true">
+    <svg width="44" height="80" viewBox="0 0 40 80">
+      <rect x="14" y="34" width="12" height="40" fill="#EDDDA2" stroke="#8A7330" stroke-width="0.6"/>
+      <rect x="14" y="34" width="12" height="3" fill="#8A7330" opacity=".5"/>
+      <line x1="20" y1="22" x2="20" y2="34" stroke="#2C1F18" stroke-width="0.8"/>
+      <g class="flame">
+        <ellipse cx="20" cy="14" rx="5" ry="11" fill="#F4D86A"/>
+        <ellipse cx="20" cy="16" rx="3" ry="7"  fill="#E89A2B"/>
+        <ellipse cx="20" cy="20" rx="1.8" ry="3.5" fill="#7C3A0F"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- =========================== MANIFESTO + VINE === -->
+<section id="manifesto" class="relative grain" style="background: var(--bg-2); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <!-- Scroll-tied SVG vine -->
+  <div class="vine-wrap" aria-hidden="true">
+    <svg viewBox="0 0 80 1200" preserveAspectRatio="none" width="80" height="100%">
+      <path id="vinePath" d="M40 0 C 25 80, 55 160, 40 240 C 25 320, 55 400, 40 480 C 25 560, 55 640, 40 720 C 25 800, 55 880, 40 960 C 25 1040, 55 1120, 40 1200"
+        fill="none" stroke="var(--botanical)" stroke-width="1.6" stroke-linecap="round"/>
+      <!-- bloom anchors -->
+      <g style="color: var(--accent);"><use class="vineBloom" href="#daisyShape" x="22" y="160" width="36" height="36"/></g>
+      <g style="color: var(--rose);"><use class="vineBloom" href="#daisyShape" x="22" y="420" width="32" height="32"/></g>
+      <g style="color: var(--accent);"><use class="vineBloom" href="#daisyShape" x="22" y="680" width="38" height="38"/></g>
+      <g style="color: var(--rose);"><use class="vineBloom" href="#daisyShape" x="22" y="940" width="34" height="34"/></g>
+    </svg>
+  </div>
+
+  <div class="wrap pt-20 pb-20 lg:pt-28 lg:pb-28 max-w-3xl mx-auto">
+    <p class="eyebrow mb-4 reveal">A small manifesto</p>
+    <h2 class="font-display mb-6 reveal" style="font-size: clamp(34px, 5.8vw, 64px); font-weight: 500;">
+      For the quiet ones — <em class="italic-display" style="color: var(--accent-strong);">the wallflowers</em>.
+    </h2>
+
+    <p class="dropcap reveal" style="font-size: 19px; line-height: 1.7; color: var(--ink-soft);">
+      <span data-text="day">Good things come to those who search. We started in 2016 as a florist tucked above an old kombucha brewery on Soi Nana, then grew upward — flowers on the walls, cake in the case, coffee from a single-origin filter. The whole building is the cafe now. Bring a book. Bring a friend. Bring no one at all.</span>
+      <span data-text="night">When the cafe lamps come on at half-past five, the spiral staircase keeps climbing — past flower-tube chandeliers and fairy lights, past raw brick and timber, up to the rooftop garden. Garden-of-Eden cocktails, soft amber lighting, the slow turn of a vinyl record on a Friday night. Order the ROSY STRAIGHT BLUSH. Ask for a railing seat.</span>
+    </p>
+
+    <blockquote class="pull mt-10 reveal">
+      <span data-text="day">It used to be a florist; they brought the flower-arranging idea into a cafe that's perfumed with the scent of flowers.</span>
+      <span data-text="night">Chinatown welcomes the rustic rooftop bar it never knew it needed.</span>
+      <footer class="not-italic mt-2 text-sm" style="font-family:'Inter Tight',sans-serif; color: var(--ink-faint); letter-spacing:.06em;">
+        <span data-text="day">— Tazzjang Aey, Wongnai (Oct 2024, translated)</span>
+        <span data-text="night">— BK Magazine, Nov 2018</span>
+      </footer>
+      <!-- SOURCE day: https://www.wongnai.com/restaurants/301356Nq-wallflowers-cafe (verified reviewer, verbatim Thai original) -->
+      <!-- SOURCE night: https://www.bkmagazine.com/bar/wallflowers-upstairs/ (verified press headline deck) -->
+    </blockquote>
+  </div>
+</section>
+
+<!-- =========================== MENU =========================== -->
+<section id="menu" class="relative grain" style="background: var(--bg);">
+  <div class="wrap py-20 lg:py-28">
+    <div class="max-w-3xl mb-12">
+      <p class="eyebrow mb-4 reveal"><span data-text="day">From the cafe · 10:00 – 18:00</span><span data-text="night">From Upstairs · 17:30 – 00:00</span></p>
+      <h2 class="font-display reveal" style="font-size: clamp(34px,5.6vw,60px); font-weight:500;">
+        <span data-text="day">Coffee, cake,<br/>and edible flowers.</span>
+        <span data-text="night">Cocktails in the<br/>Garden of Eden.</span>
+      </h2>
+      <p class="mt-5 reveal" style="font-size: 18px; line-height: 1.65; color: var(--ink-soft); max-width: 36rem;">
+        <span data-text="day">Filter-brewed at specific temperatures. A bakery case run from open. Every slice garnished with fresh flowers. Prices in baht — most regulars order the Dark Beer Cake.</span>
+        <span data-text="night">Four canonical cocktails built on a garden theme, plus Mariage Frères tea, wine by the glass, and a small list of bites. The ROSY STRAIGHT BLUSH is the one to start with.</span>
+      </p>
+    </div>
+
+    <!-- ====== DAY MENU CARDS ====== -->
+    <div data-show="day" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <article class="menu-card reveal">
+        <svg class="wax-seal" viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="#A04040" stroke="#5C1F1F" stroke-width="1.5"/><text x="30" y="34" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" fill="#F4ECD8" font-size="11" font-weight="600">W</text><circle cx="30" cy="30" r="22" fill="none" stroke="#5C1F1F" stroke-width="0.5" stroke-dasharray="2 2"/></svg>
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">Le Boissom De Kanda</span></h3>
+          <span class="price">฿250</span>
+        </div>
+        <p>A carbonated espresso with notes of citrus, peach, and earl-grey for fragrance. Won the Signature Drink Award 2016 and remains the most-ordered drink on the menu.</p>
+        <!-- SOURCE: https://danielfooddiary.com/2019/11/19/wallflowerscafe/ (verbatim: "won the Signature Drink Award 2016 and is the most ordered one from their menu") -->
+      </article>
+
+      <article class="menu-card reveal">
+        <svg class="wax-seal" viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="#A04040" stroke="#5C1F1F" stroke-width="1.5"/><text x="30" y="34" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" fill="#F4ECD8" font-size="11" font-weight="600">W</text><circle cx="30" cy="30" r="22" fill="none" stroke="#5C1F1F" stroke-width="0.5" stroke-dasharray="2 2"/></svg>
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">Dark Beer Cake</span></h3>
+          <span class="price">฿260</span>
+        </div>
+        <p>Wongnai's #1 member pick. Dense, malty, finished with fresh fruit and edible petals.</p>
+        <span class="desc-thai thai">เค้กเบียร์ดำ</span>
+        <!-- SOURCE: https://www.wongnai.com/restaurants/301356Nq-wallflowers-cafe/menu (verified top member-recommended item, item id 75145415, ฿260) -->
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">Filter Coffee</span></h3>
+          <span class="price">฿250</span>
+        </div>
+        <p>Single-origin drip — beans roasted and brewed at specific temperatures to draw out the cleanest taste and fragrance.</p>
+        <span class="desc-thai thai">ฟิลเตอร์คอฟฟี่</span>
+        <!-- SOURCE: https://danielfooddiary.com/2019/11/19/wallflowerscafe/ + Wongnai verified pricing ฿250 -->
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">Tamarind Coffee</span></h3>
+          <span class="price">฿250</span>
+        </div>
+        <p>A house-made tamarind syrup over espresso. Sweet-sour, unexpectedly bright. A regular ask on hot afternoons.</p>
+        <span class="desc-thai thai">กาแฟมะขาม</span>
+        <!-- SOURCE: https://www.wongnai.com/restaurants/301356Nq-wallflowers-cafe verified Wongnai menu item -->
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">Thai Style</span></h3>
+          <span class="price">฿150</span>
+        </div>
+        <p>Thick-pulled espresso the local way. Strong, sweet, served over ice.</p>
+        <span class="desc-thai thai">กาแฟไทย</span>
+        <!-- SOURCE: https://www.wongnai.com/restaurants/301356Nq-wallflowers-cafe -->
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">Americano</span> · <span class="thai" style="font-size:18px;">อเมริกาโน่</span></h3>
+          <span class="price">฿150</span>
+        </div>
+        <p>House blend, long-pulled. Clean, unsweetened, served hot or iced.</p>
+        <!-- SOURCE: Wongnai verified -->
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">Latte</span></h3>
+          <span class="price">฿130</span>
+        </div>
+        <p>House blend, micro-foam, served warm. Bring a book.</p>
+        <span class="desc-thai thai">ลาเต้</span>
+        <!-- SOURCE: https://danielfooddiary.com/2019/11/19/wallflowerscafe/ (Latte 130฿ verbatim) -->
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">From the cake case</span></h3>
+          <span class="price">from ฿150</span>
+        </div>
+        <p>Red Velvet, Carrot, New York Cheese, Crème Brûlée, Purple Sweet Potato — each gorgeously decorated with fresh fruit and edible flowers.</p>
+        <!-- SOURCE: https://danielfooddiary.com/2019/11/19/wallflowerscafe/ (verbatim cake list + pricing "150 baht onwards per slice") -->
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">Thai Tea</span></h3>
+          <span class="price">฿150</span>
+        </div>
+        <p>Spiced, milky, served chilled. The afternoon drink.</p>
+        <span class="desc-thai thai">ชาไทย</span>
+        <!-- SOURCE: Wongnai verified -->
+      </article>
+    </div>
+
+    <!-- ====== NIGHT / BAR CARDS ====== -->
+    <div data-show="night" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <article class="menu-card is-bar reveal">
+        <svg class="wax-seal" viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="#A04040" stroke="#5C1F1F" stroke-width="1.5"/><text x="30" y="34" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" fill="#F4ECD8" font-size="11" font-weight="600">W</text><circle cx="30" cy="30" r="22" fill="none" stroke="#5C1F1F" stroke-width="0.5" stroke-dasharray="2 2"/></svg>
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">Rosy Straight Blush</span></h3>
+          <span class="price">signature</span>
+        </div>
+        <p>Vodka, Aperol, watermelon, passion fruit, yuzu juice, vanilla syrup. Garden-blush in a glass — the one to start with.</p>
+        <!-- SOURCE: https://www.asia-bars.com/2019/12/wallflowers-upstairs-roooftop-bar-in-bangkok/ (verbatim ingredient list) -->
+      </article>
+
+      <article class="menu-card is-bar reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">EDEN</span></h3>
+          <span class="price">garden</span>
+        </div>
+        <p>Hendrick's Gin, Aperol, elderflower, lychee, lemon. Garden-of-Eden themed — floral, citrus, pulls the whole room in.</p>
+        <!-- SOURCE: https://www.asia-bars.com/2019/12/wallflowers-upstairs-roooftop-bar-in-bangkok/ -->
+      </article>
+
+      <article class="menu-card is-bar reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">LOUISE</span></h3>
+          <span class="price">spirit</span>
+        </div>
+        <p>Bulleit Rye Bourbon, Martini Bianco, ginger, fresh Fuji apple juice. Warm, slightly spicy. For colder evenings on the rooftop.</p>
+        <!-- SOURCE: https://www.asia-bars.com/2019/12/wallflowers-upstairs-roooftop-bar-in-bangkok/ -->
+      </article>
+
+      <article class="menu-card is-bar reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">NEGRONI</span></h3>
+          <span class="price">classic</span>
+        </div>
+        <p>Gin, Sweet Vermouth, Campari. Built the right way. Asked for by name.</p>
+        <!-- SOURCE: https://www.asia-bars.com/2019/12/wallflowers-upstairs-roooftop-bar-in-bangkok/ -->
+      </article>
+
+      <article class="menu-card is-bar reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">Wine by the glass</span></h3>
+          <span class="price">from ฿400</span>
+        </div>
+        <p>A short list, rotated through the season. Ask the bar what's poured tonight.</p>
+        <!-- SOURCE: Wongnai menu category "Wine the Glasses" + Tripadvisor reviewer (400 THB+ glass) -->
+      </article>
+
+      <article class="menu-card is-bar reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">Mariage Frères Tea</span></h3>
+          <span class="price">house</span>
+        </div>
+        <p>The Parisian house, brewed by the pot. Pair with a slice from the cake case still on the floor below.</p>
+        <!-- SOURCE: https://www.wongnai.com/restaurants/301356Nq-wallflowers-cafe/menu (verbatim menu category "Mariage Freres Tea") -->
+      </article>
+
+      <article class="menu-card is-bar reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">Small plates &amp; bites</span></h3>
+          <span class="price">market</span>
+        </div>
+        <p>International-leaning food, plated to share — bites, small plates, rolls &amp; rice, signature Asian noodles, pasta, dessert. Menu changes by the season.</p>
+        <!-- SOURCE: Wongnai menu category list (Bites · Small Plates · Rolls & Rice · Signature Asian Noodles · Pasta · Dessert) verified verbatim -->
+      </article>
+
+      <article class="menu-card is-bar reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">Mocktails &amp; cold-press</span></h3>
+          <span class="price">no proof</span>
+        </div>
+        <p>Fusion mocktails and cold-pressed juices for the non-drinker. The bar is generous either way.</p>
+        <!-- SOURCE: https://www.timeout.com/bangkok/restaurants/wallflowers "fusion mocktails" verbatim -->
+      </article>
+
+      <article class="menu-card is-bar reveal">
+        <div class="flex justify-between items-baseline gap-3">
+          <h3><span class="underline-draw">Live music · Fri &amp; Sat</span></h3>
+          <span class="price">on the house</span>
+        </div>
+        <p>Jazz, RnB, vinyl classics on a DJ set. The room turns warmer as the night goes on. Reservations strongly recommended.</p>
+        <!-- SOURCE: IG reel @wallflowerscafe.th (verbatim "WFW'S live music every fri,sat at...") + Tripadvisor reviewer RonanB330 + InTravel.net -->
+      </article>
+    </div>
+
+    <p class="text-center mt-9" style="font-size: 14px; color: var(--ink-faint); font-family:'Inter Tight',sans-serif;">
+      Full menus on Linktree — <a class="underline" style="color: var(--accent-strong);" href="https://linktr.ee/wallflowersth" target="_blank" rel="noopener">food · coffee · cake · drinks bar</a>.
+    </p>
+  </div>
+</section>
+
+<!-- =========================== SCRAPBOOK GALLERY =========================== -->
+<section id="gallery" class="relative grain" style="background: var(--bg-2);">
+  <div class="wrap py-20 lg:py-28">
+    <div class="max-w-3xl mb-12">
+      <p class="eyebrow mb-4 reveal">A pressed-flower scrapbook</p>
+      <h2 class="font-display reveal" style="font-size: clamp(34px,5.6vw,60px); font-weight:500;">
+        <span data-text="day">Tucked away on Soi Nana —<br/>a flower shop with a cafe upstairs.</span>
+        <span data-text="night">A spiral staircase, candlelight,<br/>and a roof over Chinatown.</span>
+      </h2>
+      <p class="mt-5 reveal" style="font-size: 18px; color: var(--ink-soft); max-width: 36rem;">
+        <span data-text="day">Photographed by Wongnai regulars and Daniel Food Diary — verified to this address. Tilt your phone closer to see the edible flowers on the cake.</span>
+        <span data-text="night">Photographed for Wallflowers Upstairs' opening by Asia Bars (Dec 2019). Fairy lights, rattan, flower-tube chandeliers, raw brick — soft amber from open to last call.</span>
+      </p>
+    </div>
+
+    <div class="scrapbook">
+      <!-- DAY photos -->
+      <figure data-show="day" class="polaroid reveal" style="--rot:-2.2deg; transform: rotate(-2.2deg);">
+        <span class="washi tl" aria-hidden="true"></span>
+        <!-- src: https://danielfooddiary.com/wp-content/uploads/2019/11/wallflower2.jpg via Wongnai verified pair, mid-floor day interior -->
+        <img src="images/wn-interior-vintage.jpg" alt="The sunlit middle floor — vintage shophouse, wood window, plants and books."/>
+        <figcaption>middle-floor sunlight</figcaption>
+      </figure>
+
+      <figure data-show="day" class="polaroid reveal" style="--rot:1.6deg; transform: rotate(1.6deg);">
+        <span class="washi tr" aria-hidden="true"></span>
+        <!-- src: https://img.wongnai.com/p/1920x0/2025/03/23/dd7981dd05ea4f6c95b1d4bb19aabfaa.jpg verified Wongnai 2025 user upload, the miniature house model -->
+        <img src="images/wn-miniature-house.jpg" alt="A miniature model of a house — a small detail regulars come back for."/>
+        <figcaption>the miniature house</figcaption>
+      </figure>
+
+      <figure data-show="day" class="polaroid reveal" style="--rot:-1.5deg; transform: rotate(-1.5deg);">
+        <span class="washi tl" aria-hidden="true"></span>
+        <!-- src: https://img.wongnai.com/p/1920x0/2024/10/29/a4b5ff1f5f924307961b9c90707f3282.jpg verified Wongnai user upload, cake with flowers -->
+        <img src="images/wn-cake-with-flowers.jpg" alt="A slice from the cake case, decorated with fresh flowers."/>
+        <figcaption>edible petals on cake</figcaption>
+      </figure>
+
+      <figure data-show="day" class="polaroid reveal" style="--rot:2.0deg; transform: rotate(2.0deg);">
+        <span class="washi tr" aria-hidden="true"></span>
+        <!-- src: https://img.wongnai.com/p/1920x0/2024/10/10/3fa121d896c74d8e95baa883520470d5.jpg verified Wongnai user upload, latte art -->
+        <img src="images/wn-cappuccino-latte-art.jpg" alt="A cappuccino with rosette latte art — house blend."/>
+        <figcaption>house cappuccino</figcaption>
+      </figure>
+
+      <figure data-show="day" class="polaroid reveal" style="--rot:-2.4deg; transform: rotate(-2.4deg);">
+        <span class="washi tl" aria-hidden="true"></span>
+        <!-- src: https://img.wongnai.com/p/1920x0/2024/10/18/c4cfd1341f3b4f33ba7b1f0dc0318b66.jpg verified Wongnai, cold brew with ice cream and flowers -->
+        <img src="images/wn-coldbrew-icecream-flowers.jpg" alt="A cold brew served with ice cream and a fresh flower garnish."/>
+        <figcaption>cold brew + ice cream</figcaption>
+      </figure>
+
+      <figure data-show="day" class="polaroid reveal" style="--rot:1.4deg; transform: rotate(1.4deg);">
+        <span class="washi tr" aria-hidden="true"></span>
+        <!-- src: https://img.wongnai.com/p/1920x0/2024/08/12/211f7655726b457f8fe34fcc232dee4e.jpg verified Wongnai, vintage furniture day -->
+        <img src="images/wn-vintage-furniture.jpg" alt="A round wooden table with vintage chairs and dried-flower arrangements."/>
+        <figcaption>retro rattan corner</figcaption>
+      </figure>
+
+      <figure data-show="day" class="polaroid reveal" style="--rot:-1.9deg; transform: rotate(-1.9deg);">
+        <span class="washi tl" aria-hidden="true"></span>
+        <!-- src: https://img.wongnai.com/p/1920x0/2024/10/27/2288274207c84a7a9ba90009f0dfe28b.jpg verified Wongnai shophouse interior -->
+        <img src="images/wn-day-interior-2.jpg" alt="Sunlight through a wooden shophouse window onto plants."/>
+        <figcaption>old shophouse, dressed up</figcaption>
+      </figure>
+
+      <figure data-show="day" class="polaroid reveal" style="--rot:2.2deg; transform: rotate(2.2deg);">
+        <span class="washi tr" aria-hidden="true"></span>
+        <!-- src: https://img.wongnai.com/p/1920x0/2024/10/27/5e5ef5e6a73b4f22bb4ef9bc83b7695b.jpg verified Wongnai cake + coffee pair -->
+        <img src="images/wn-cake-coffee-pair.jpg" alt="A slice of cake next to coffee — the standing daytime order."/>
+        <figcaption>the standing order</figcaption>
+      </figure>
+
+      <figure data-show="day" class="polaroid reveal" style="--rot:-1.2deg; transform: rotate(-1.2deg);">
+        <span class="washi tl" aria-hidden="true"></span>
+        <!-- src: https://img.wongnai.com/p/1920x0/2024/10/29/0b5098a9a0db46cba26ffb95a1eee029.jpg verified Wongnai detail -->
+        <img src="images/wn-flowers-detail.jpg" alt="Detail of dried-flower arrangement on a windowsill."/>
+        <figcaption>dried-flower detail</figcaption>
+      </figure>
+
+      <figure data-show="day" class="polaroid reveal" style="--rot:1.8deg; transform: rotate(1.8deg);">
+        <span class="washi tr" aria-hidden="true"></span>
+        <!-- src: https://img.wongnai.com/p/1920x0/2024/10/10/c0bdf942f5b24721ad67be609454b6e6.jpg verified Wongnai day interior 2 -->
+        <img src="images/wn-vintage-detail.jpg" alt="Another vintage detail — a corner with plants, books, lamp."/>
+        <figcaption>plants &amp; paperbacks</figcaption>
+      </figure>
+
+      <figure data-show="day" class="polaroid reveal" style="--rot:-2.0deg; transform: rotate(-2.0deg);">
+        <span class="washi tl" aria-hidden="true"></span>
+        <!-- src: https://img.wongnai.com/p/1920x0/2024/10/10/a27bd369ef55454ebcc1ed9678c9d0a9.jpg verified Wongnai cake with edible flowers -->
+        <img src="images/wn-cake-edible-flowers.jpg" alt="Cake garnished with edible petals."/>
+        <figcaption>cake from the case</figcaption>
+      </figure>
+
+      <figure data-show="day" class="polaroid reveal" style="--rot:2.4deg; transform: rotate(2.4deg);">
+        <span class="washi tr" aria-hidden="true"></span>
+        <!-- src: https://img.wongnai.com/p/1920x0/2024/08/12/f1e9bf0bc8f74c0684a7c88ce967445d.jpg verified Wongnai dessert -->
+        <img src="images/wn-dessert.jpg" alt="A small dessert plate."/>
+        <figcaption>dessert of the week</figcaption>
+      </figure>
+
+      <!-- NIGHT photos -->
+      <figure data-show="night" class="polaroid reveal" style="--rot:-1.8deg; transform: rotate(-1.8deg);">
+        <span class="washi tl" aria-hidden="true"></span>
+        <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-10r.jpg verified Asia Bars Wallflowers Upstairs feature -->
+        <img src="images/night-rooftop.jpg" alt="The rooftop bar at dusk — fairy lights, rattan chairs, a roof over Chinatown."/>
+        <figcaption>the rooftop at dusk</figcaption>
+      </figure>
+
+      <figure data-show="night" class="polaroid reveal" style="--rot:1.5deg; transform: rotate(1.5deg);">
+        <span class="washi tr" aria-hidden="true"></span>
+        <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-7r-1024x683.jpg verified Asia Bars -->
+        <img src="images/night-bar-interior.jpg" alt="Inside the bar — soft amber light, flowers and bottles."/>
+        <figcaption>soft amber light</figcaption>
+      </figure>
+
+      <figure data-show="night" class="polaroid reveal" style="--rot:-2.1deg; transform: rotate(-2.1deg);">
+        <span class="washi tl" aria-hidden="true"></span>
+        <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-5.jpg verified Asia Bars - Rosy Straight Blush signature -->
+        <img src="images/night-rosy-blush.jpg" alt="The ROSY STRAIGHT BLUSH cocktail — vodka, Aperol, watermelon, passion fruit, yuzu, vanilla."/>
+        <figcaption>ROSY STRAIGHT BLUSH</figcaption>
+      </figure>
+
+      <figure data-show="night" class="polaroid reveal" style="--rot:1.7deg; transform: rotate(1.7deg);">
+        <span class="washi tr" aria-hidden="true"></span>
+        <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-3.jpg verified Asia Bars - EDEN cocktail -->
+        <img src="images/night-eden.jpg" alt="The EDEN cocktail — Hendrick's, Aperol, elderflower, lychee, lemon."/>
+        <figcaption>EDEN</figcaption>
+      </figure>
+
+      <figure data-show="night" class="polaroid reveal" style="--rot:-1.4deg; transform: rotate(-1.4deg);">
+        <span class="washi tl" aria-hidden="true"></span>
+        <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-6.jpg verified Asia Bars - LOUISE -->
+        <img src="images/night-louise.jpg" alt="The LOUISE — Bulleit rye, Martini Bianco, ginger, Fuji apple."/>
+        <figcaption>LOUISE</figcaption>
+      </figure>
+
+      <figure data-show="night" class="polaroid reveal" style="--rot:2.0deg; transform: rotate(2.0deg);">
+        <span class="washi tr" aria-hidden="true"></span>
+        <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-4.jpg verified Asia Bars - Negroni -->
+        <img src="images/night-negroni.jpg" alt="A NEGRONI on the rooftop bar."/>
+        <figcaption>NEGRONI, on the rooftop</figcaption>
+      </figure>
+
+      <figure data-show="night" class="polaroid reveal" style="--rot:-2.3deg; transform: rotate(-2.3deg);">
+        <span class="washi tl" aria-hidden="true"></span>
+        <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-11r.jpg verified Asia Bars -->
+        <img src="images/night-bar-dim.jpg" alt="Dim corner of the bar — flower-tube chandelier overhead."/>
+        <figcaption>flower-tube chandelier</figcaption>
+      </figure>
+
+      <figure data-show="night" class="polaroid reveal" style="--rot:1.3deg; transform: rotate(1.3deg);">
+        <span class="washi tr" aria-hidden="true"></span>
+        <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-8.jpg verified Asia Bars -->
+        <img src="images/night-rooftop-2.jpg" alt="Another corner of the rooftop bar at night."/>
+        <figcaption>railing seat</figcaption>
+      </figure>
+
+      <figure data-show="night" class="polaroid reveal" style="--rot:-1.6deg; transform: rotate(-1.6deg);">
+        <span class="washi tl" aria-hidden="true"></span>
+        <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-9.jpg verified Asia Bars -->
+        <img src="images/night-rooftop-3.jpg" alt="Rooftop garden setting — exposed brick, plants and timber."/>
+        <figcaption>raw brick &amp; timber</figcaption>
+      </figure>
+
+      <figure data-show="night" class="polaroid reveal" style="--rot:2.1deg; transform: rotate(2.1deg);">
+        <span class="washi tr" aria-hidden="true"></span>
+        <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-1.jpg verified Asia Bars -->
+        <img src="images/night-cocktail-1.jpg" alt="A garden-themed cocktail caught in soft amber light."/>
+        <figcaption>house cocktail</figcaption>
+      </figure>
+    </div>
+
+    <p class="text-center mt-10" style="font-size: 13px; color: var(--ink-faint); font-family:'Inter Tight',sans-serif;">
+      Photos verified via <a class="underline" style="color: var(--accent-strong);" href="https://www.wongnai.com/restaurants/301356Nq-wallflowers-cafe" target="_blank" rel="noopener">Wongnai</a>, <a class="underline" style="color: var(--accent-strong);" href="https://www.asia-bars.com/2019/12/wallflowers-upstairs-roooftop-bar-in-bangkok/" target="_blank" rel="noopener">Asia Bars (Wallflowers Upstairs feature)</a> &amp; <a class="underline" style="color: var(--accent-strong);" href="https://danielfooddiary.com/2019/11/19/wallflowerscafe/" target="_blank" rel="noopener">Daniel Food Diary</a>. Cross-referenced to 31-33 Soi Nana.
+    </p>
+  </div>
+</section>
+
+<!-- =========================== PRESS QUOTES =========================== -->
+<section class="relative grain" style="background: var(--bg);">
+  <div class="wrap py-16 lg:py-24">
+    <p class="eyebrow mb-8 text-center reveal">Said in the press</p>
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <blockquote class="reveal" style="border-top: 1px solid var(--border); padding-top: 24px;">
+        <p class="italic-display" style="font-size: 22px; line-height: 1.35; color: var(--ink);">"Chinatown welcomes the rustic rooftop bar it never knew it needed."</p>
+        <footer class="mt-4 text-sm" style="font-family:'Inter Tight',sans-serif; color: var(--ink-faint); letter-spacing:.06em;">— BK Magazine, Nov 2018</footer>
+        <!-- SOURCE: https://www.bkmagazine.com/bar/wallflowers-upstairs/ verified headline deck -->
+      </blockquote>
+      <blockquote class="reveal" style="border-top: 1px solid var(--border); padding-top: 24px;">
+        <p class="italic-display" style="font-size: 22px; line-height: 1.35; color: var(--ink);">"Hidden &amp; vintage flower-themed cafe with full display of cakes."</p>
+        <footer class="mt-4 text-sm" style="font-family:'Inter Tight',sans-serif; color: var(--ink-faint); letter-spacing:.06em;">— Daniel Food Diary, Nov 2019</footer>
+        <!-- SOURCE: https://danielfooddiary.com/2019/11/19/wallflowerscafe/ verbatim headline -->
+      </blockquote>
+      <blockquote class="reveal" style="border-top: 1px solid var(--border); padding-top: 24px;">
+        <p class="italic-display" style="font-size: 22px; line-height: 1.35; color: var(--ink);">"Soft amber lighting throughout, creating a romantic yet relaxing atmosphere."</p>
+        <footer class="mt-4 text-sm" style="font-family:'Inter Tight',sans-serif; color: var(--ink-faint); letter-spacing:.06em;">— Time Out Bangkok</footer>
+        <!-- SOURCE: https://www.timeout.com/bangkok/bars/wallflowers-upstairs verbatim -->
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== RSVP CARD =========================== -->
+<section class="relative grain" style="background: var(--bg-2);">
+  <div class="wrap py-20 lg:py-24 max-w-3xl mx-auto">
+    <div class="rsvp reveal">
+      <p class="eyebrow text-center mb-6" style="color: var(--accent-strong);">— with our compliments —</p>
+      <h2><span class="italic-display">Please</span> reserve</h2>
+      <p class="intro">
+        Tables are spoken for quickly on Friday and Saturday — vinyl nights upstairs. We hold by LINE; tap below to send a request and our team will reply with the time.
+      </p>
+      <div class="flex flex-col items-center gap-3 mt-9">
+        <a class="btn btn-primary btn-lg" target="_blank" rel="noopener" href="https://lin.ee/ME6TMdA" data-cta="rsvp-line">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <span>Reserve via LINE</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="text-sm hover:underline mt-1" href="tel:+66946714433" style="color: var(--ink-soft); font-family:'Inter Tight',sans-serif;">or call <strong style="color: var(--ink);">+66 94 671 4433</strong></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== VISIT =========================== -->
+<section id="visit" class="relative grain" style="background: var(--bg);">
+  <div class="wrap py-20 lg:py-28 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+    <div>
+      <p class="eyebrow mb-4 reveal">Visit</p>
+      <h2 class="font-display mb-5 reveal" style="font-size: clamp(30px,4.4vw,48px); font-weight: 500;">
+        Soi Nana, on the Chinatown side.
+      </h2>
+      <p class="mb-8 reveal" style="font-size: 18px; line-height: 1.65; color: var(--ink-soft); max-width: 32rem;">
+        Tucked into the Soi Nana cocktail-bar district, six minutes' walk from MRT Hua Lamphong. The cafe sits in a pair of vintage shophouses — flowers on every floor, a creaky wooden staircase to the rooftop.
+      </p>
+
+      <dl class="grid gap-7 mb-9">
+        <div class="reveal">
+          <dt class="eyebrow mb-1">Address</dt>
+          <dd style="font-size: 16px;">31-33 Soi Nana, Pom Prap,<br/>Pom Prap Sattru Phai, Bangkok 10100<br/>
+            <span class="thai" style="font-size: 14px; color: var(--ink-soft);">31-33 ซอย นานา, แขวง ป้อมปราบ, เขต ป้อมปราบศัตรูพ่าย, กรุงเทพฯ 10100</span>
+          </dd>
+        </div>
+        <div class="reveal">
+          <dt class="eyebrow mb-1">Hours</dt>
+          <dd>
+            <table class="text-[15px]"><tbody>
+              <tr><th class="text-left font-medium pr-6 pb-1.5" style="color: var(--ink); font-weight:500;">Cafe</th><td class="pb-1.5 tabular-nums" style="color: var(--ink-soft);">10:00 — 18:00 · daily</td></tr>
+              <tr><th class="text-left font-medium pr-6" style="color: var(--ink); font-weight:500;">Upstairs Bar</th><td class="tabular-nums" style="color: var(--ink-soft);">17:30 — 00:00 · daily</td></tr>
+            </tbody></table>
+          </dd>
+        </div>
+        <div class="reveal">
+          <dt class="eyebrow mb-1">Phone</dt>
+          <dd style="font-size: 16px;"><a href="tel:+66946714433" class="underline" style="color: var(--ink);">+66 94 671 4433</a></dd>
+        </div>
+        <div class="reveal">
+          <dt class="eyebrow mb-1">Email</dt>
+          <dd style="font-size: 16px;"><a href="mailto:cafe@wallflowersth.com" class="underline" style="color: var(--ink);">cafe@wallflowersth.com</a></dd>
+        </div>
+        <div class="reveal">
+          <dt class="eyebrow mb-1">All our menus &amp; links</dt>
+          <dd style="font-size: 16px;"><a href="https://linktr.ee/wallflowersth" target="_blank" rel="noopener" class="underline" style="color: var(--ink);">linktr.ee/wallflowersth</a> <span style="color: var(--ink-faint);">— food, coffee, cake, drinks bar, LINE.</span></dd>
+        </div>
+      </dl>
+
+      <div class="flex flex-wrap gap-3 reveal">
+        <a class="btn btn-primary" target="_blank" rel="noopener" href="https://lin.ee/ME6TMdA" data-cta="visit-reserve"><span>Reserve a table</span><span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://maps.app.goo.gl/Akdew1xC342BYbir8" data-cta="visit-directions">Get directions</a>
+      </div>
+    </div>
+
+    <div class="reveal rounded-md overflow-hidden" style="aspect-ratio: 4/5; min-height: 380px; border:1px solid var(--border); box-shadow: 0 30px 60px -28px rgba(0,0,0,0.45);">
+      <iframe title="Map to Wallflowers Cafe — 31-33 Soi Nana, Bangkok" src="https://www.google.com/maps?q=Wallflowers+Cafe+Soi+Nana+Bangkok&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-full block" style="border:0; filter: contrast(1.05);" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =========================== FOOTER =========================== -->
+<footer class="relative grain pt-16 pb-12" style="background: var(--bg-2); border-top: 1px solid var(--border);">
+  <div class="wrap grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div>
+      <p class="font-display text-[26px]" style="font-style: italic; font-weight: 600; color: var(--ink); letter-spacing:.01em;">Wallflowers</p>
+      <p class="text-[13px] thai" style="color: var(--ink-soft);">วอลฟลาวเวอร์ คาเฟ่</p>
+      <p class="text-[12px] mt-3" style="color: var(--ink-faint); font-family:'Inter Tight',sans-serif;">Cafe by day. Bar by night.<br/>Since June 2016.</p>
+    </div>
+    <div>
+      <p class="eyebrow mb-2.5">Find us</p>
+      <p class="text-[14px] leading-relaxed">31-33 Soi Nana<br/>Pom Prap, Bangkok 10100</p>
+      <p class="text-[14px] mt-1.5"><a href="tel:+66946714433" class="hover:underline" style="color: var(--ink);">094 671 4433</a></p>
+      <p class="text-[14px]"><a href="mailto:cafe@wallflowersth.com" class="hover:underline" style="color: var(--ink);">cafe@wallflowersth.com</a></p>
+    </div>
+    <div>
+      <p class="eyebrow mb-2.5">Hours</p>
+      <p class="text-[14px] leading-relaxed">Cafe · 10:00 — 18:00<br/>Upstairs Bar · 17:30 — 00:00<br/><span style="color: var(--ink-faint);">Live music · Fri &amp; Sat</span></p>
+    </div>
+    <div>
+      <p class="eyebrow mb-2.5">Social</p>
+      <p class="text-[14px] leading-loose">
+        <a href="https://www.instagram.com/wallflowerscafe.th/" target="_blank" rel="noopener" class="hover:underline" style="color: var(--ink);">Instagram</a><br/>
+        <a href="https://www.facebook.com/wallflowerscafe.th" target="_blank" rel="noopener" class="hover:underline" style="color: var(--ink);">Facebook</a><br/>
+        <a href="https://lin.ee/ME6TMdA" target="_blank" rel="noopener" class="hover:underline" style="color: var(--ink);">LINE · reserve</a><br/>
+        <a href="https://linktr.ee/wallflowersth" target="_blank" rel="noopener" class="hover:underline" style="color: var(--ink);">Linktree</a>
+      </p>
+    </div>
+  </div>
+  <p class="text-center text-[12px] mt-10 pt-5 mx-auto wrap" style="color: var(--ink-faint); border-top: 1px solid var(--border); font-family:'Inter Tight',sans-serif;">
+    © Wallflowers Cafe · 31-33 Soi Nana, Bangkok. Built with care from verified sources.
+  </p>
+</footer>
+
+<!-- Sticky mobile CTA -->
+<a class="sticky-cta" target="_blank" rel="noopener" href="https://lin.ee/ME6TMdA" data-cta="sticky-reserve">
+  <span>Reserve a table</span><span aria-hidden="true">→</span>
+</a>
+
+<!-- Cursor petal -->
+<svg class="cursor-petal" id="cursorPetal" width="22" height="32" viewBox="0 0 40 60" style="color: var(--rose);">
+  <use href="#petalShape"/>
+</svg>
+
+<!-- Easter-egg bloom -->
+<svg class="bloom-petal" id="bloomPetal" width="120" height="120" viewBox="0 0 60 60" aria-hidden="true">
+  <g style="color: var(--accent);"><use href="#daisyShape"/></g>
+</svg>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ===== HOURS · Bangkok ===== */
+  var CAFE = {open:'10:00', close:'18:00'};
+  var BAR  = {open:'17:30', close:'24:00'};
+  function bkkParts(){
+    var fmt = new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Bangkok', hour12:false, hour:'2-digit', minute:'2-digit'});
+    var p = fmt.formatToParts(new Date());
+    var hh = p.find(function(x){return x.type==='hour';}).value;
+    var mm = p.find(function(x){return x.type==='minute';}).value;
+    return { hh: parseInt(hh,10), mm: parseInt(mm,10), m: parseInt(hh,10)*60 + parseInt(mm,10) };
+  }
+  function toMin(t){ var x=t.split(':'); return parseInt(x[0],10)*60 + parseInt(x[1],10); }
+
+  /* ===== MODE TOGGLE — auto by Bangkok hour ===== */
+  var html = document.documentElement;
+  function setMode(mode, animate){
+    if (html.getAttribute('data-mode') === mode) return;
+    html.setAttribute('data-mode', mode);
+    document.querySelectorAll('[data-mode-btn]').forEach(function(b){
+      b.setAttribute('aria-pressed', b.dataset.modeBtn === mode ? 'true' : 'false');
+    });
+    if (animate && window.gsap) {
+      gsap.fromTo('body', { filter: 'brightness(1.0)' }, { filter: 'brightness(1.0)', duration: 1.2, ease: 'power2.out' });
+      // sweep effect
+      var sweep = document.createElement('div');
+      sweep.style.cssText = 'position:fixed; inset:0; z-index:2000; background: '+(mode==='night'?'radial-gradient(ellipse at 50% 30%, rgba(15,12,24,0) 0%, rgba(15,12,24,0.85) 80%)':'radial-gradient(ellipse at 50% 30%, rgba(244,236,216,0) 0%, rgba(244,236,216,0.7) 80%)')+'; opacity:0; pointer-events:none;';
+      document.body.appendChild(sweep);
+      gsap.to(sweep, { opacity: 1, duration: 0.5, ease: 'power2.out' });
+      gsap.to(sweep, { opacity: 0, duration: 0.7, delay: 0.55, ease: 'power2.inOut', onComplete: function(){ sweep.remove(); }});
+    }
+  }
+  // Auto on first load by Bangkok time
+  (function(){
+    var p = bkkParts();
+    var openCafe = toMin(CAFE.open), closeCafe = toMin(CAFE.close);
+    var openBar  = toMin(BAR.open);
+    var initial = (p.m >= openBar || p.m < openCafe) ? 'night' : 'day';
+    setMode(initial, false);
+  })();
+  document.querySelectorAll('[data-mode-btn]').forEach(function(b){
+    b.addEventListener('click', function(){ setMode(b.dataset.modeBtn, true); });
+  });
+
+  /* ===== LIVE STATUS PILL ===== */
+  function updateStatus(){
+    var el = document.getElementById('liveStatus'); if (!el) return;
+    var p = bkkParts();
+    var inCafe = p.m >= toMin(CAFE.open) && p.m < toMin(CAFE.close);
+    var inBar  = p.m >= toMin(BAR.open)  && p.m < toMin(BAR.close);
+    var msg;
+    if (inCafe && inBar) msg = 'Cafe open · Upstairs bar opens at 17:30';
+    else if (inCafe)     msg = 'Cafe open · closes at 18:00';
+    else if (inBar)      msg = 'Upstairs Bar open · last call near midnight';
+    else if (p.m < toMin(CAFE.open)) msg = 'Closed · cafe opens at 10:00 (Bangkok time)';
+    else                 msg = 'Closed · bar reopens tomorrow at 17:30';
+    var isOpen = inCafe || inBar;
+    el.textContent = msg;
+    el.classList.toggle('is-open', isOpen);
+    el.classList.toggle('is-closed', !isOpen);
+  }
+
+  /* ===== WORDMARK INK-BLEED REVEAL ===== */
+  function revealWordmark(){
+    var w = document.querySelector('.wordmark'); if (w) w.classList.add('is-revealed');
+  }
+
+  /* ===== LENIS SMOOTH SCROLL ===== */
+  var lenis = null;
+  if (window.Lenis && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    lenis = new Lenis({ duration: 1.2, easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smoothWheel: true });
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+  }
+
+  /* ===== GSAP SCROLLTRIGGER REGISTER ===== */
+  if (window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    if (lenis){ lenis.on('scroll', ScrollTrigger.update); }
+
+    // Reveals
+    gsap.utils.toArray('.reveal').forEach(function(el, i){
+      gsap.fromTo(el, { y: 24, opacity: 0 }, {
+        y: 0, opacity: 1, duration: 0.95, ease: 'power2.out', delay: 0.04 * (i % 6),
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+
+    // Hero parallax petals
+    gsap.utils.toArray('.petal').forEach(function(p){
+      var depth = parseFloat(p.dataset.depth || '0.2');
+      gsap.to(p, { yPercent: 60 * depth, scrollTrigger: { trigger: '#manifesto', start: 'top bottom', end: 'top top', scrub: 0.6 }});
+    });
+
+    // Scroll-tied vine grow
+    var path = document.getElementById('vinePath');
+    if (path){
+      var len = path.getTotalLength();
+      path.style.strokeDasharray = len + ' ' + len;
+      path.style.strokeDashoffset = len;
+      gsap.to(path, {
+        strokeDashoffset: 0, ease: 'none',
+        scrollTrigger: { trigger: '#manifesto', start: 'top 80%', end: 'bottom 20%', scrub: 0.5 }
+      });
+      gsap.utils.toArray('.vineBloom').forEach(function(b, i){
+        gsap.fromTo(b, { scale: 0, opacity: 0, transformOrigin: '50% 50%' }, {
+          scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(1.4)',
+          scrollTrigger: { trigger: b, start: 'top 75%' }
+        });
+      });
+    }
+
+    // Polaroid scrapbook stagger
+    ScrollTrigger.batch('.polaroid', {
+      start: 'top 88%',
+      onEnter: function(els){
+        gsap.fromTo(els, { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.75, stagger: 0.08, ease: 'power2.out' });
+      }
+    });
+  }
+
+  /* ===== DRIED-PETAL CURSOR TRAIL ===== */
+  var supportsHover = matchMedia('(hover: hover)').matches;
+  var reduceMotion  = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (supportsHover && !reduceMotion && window.gsap){
+    var cursor = document.getElementById('cursorPetal');
+    var lastTrail = 0;
+    document.addEventListener('mousemove', function(e){
+      if (cursor){
+        gsap.to(cursor, { x: e.clientX - 11, y: e.clientY - 16, rotation: '+=0.5', duration: 0.5, ease: 'power2.out' });
+      }
+      var now = performance.now();
+      if (now - lastTrail < 90) return;
+      lastTrail = now;
+      var trail = cursor.cloneNode(true);
+      trail.id = '';
+      trail.removeAttribute('class');
+      trail.style.cssText = 'position:fixed; left:0; top:0; pointer-events:none; z-index:79; opacity:.85; color: var(--rose); width:16px; height:24px;';
+      trail.style.transform = 'translate('+(e.clientX-8)+'px,'+(e.clientY-12)+'px) rotate('+(Math.random()*180-90)+'deg)';
+      document.body.appendChild(trail);
+      gsap.to(trail, { opacity: 0, y: '+=24', rotation: '+=40', duration: 1.4, ease: 'power1.out', onComplete: function(){ trail.remove(); }});
+    }, { passive: true });
+  }
+
+  /* ===== HEADER NAV CLICKS — Lenis-aware smooth ===== */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href').slice(1);
+      var target = document.getElementById(id); if (!target) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(target, { offset: -60, duration: 1.3 });
+      else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  /* ===== EASTER EGG — type "wallflower" ===== */
+  var typed = '';
+  var bloom = document.getElementById('bloomPetal');
+  document.addEventListener('keydown', function(e){
+    if (e.key.length === 1) {
+      typed = (typed + e.key.toLowerCase()).slice(-20);
+      if (typed.includes('wallflower')) {
+        bloom.classList.add('is-blooming');
+        setTimeout(function(){ bloom.classList.remove('is-blooming'); }, 3400);
+        typed = '';
+      }
+    }
+  });
+
+  /* ===== INIT ===== */
+  document.addEventListener('DOMContentLoaded', function(){
+    updateStatus();
+    setTimeout(revealWordmark, 250);
+    document.querySelectorAll('[data-cta]').forEach(function(n){
+      n.addEventListener('click', function(){ try { console.info('cta_click', n.dataset.cta); } catch(_){} }, { passive: true });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

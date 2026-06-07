@@ -8,5 +8,7 @@ desktop.ini
 # helper batch files I generated for the Cowork workflow
 push-to-github.bat
 deploy-vercel.bat
+login-then-deploy.bat
 open-site.bat
 open-repo.bat
+deploy.log

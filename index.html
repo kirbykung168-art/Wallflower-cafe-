@@ -4,8 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#0F0C18" />
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
 <title>Wallflowers Cafe — by day, by night · Soi Nana, Bangkok</title>
-<meta name="description" content="A pair of vintage shophouses on Soi Nana. Cafe by day (10:00–18:00), bar by night (17:30–00:00). Signature Le Boissom De Kanda, Dark Beer Cake, ROSY STRAIGHT BLUSH cocktail. Reserve via LINE." />
+<meta name="description" content="A pair of vintage shophouses on Soi Nana. Cafe by day (10:00–18:00), bar by night (17:30–00:00). Signature Le Boisson de Kanda, Dark Beer Cake, ROSY STRAIGHT BLUSH cocktail. Reserve via LINE." />
 
 <!--
 ========================================================================
@@ -14,22 +15,26 @@ WALLFLOWERS CAFE · BANGKOK
 ========================================================================
 
 BRAND BRIEF (verified content-first synthesis)
-Wallflowers began in June 2016 as Oneday Wallflowers — the second florist
-outpost of Bangkok specialty-coffee group Casa Lapin — opened inside a pair
-of vintage shophouses at 31-33 Soi Nana ("what used to be the charming Pure
-Luck kombucha brewery", BK Magazine 2016). It grew upward through the
-building: a flower-and-cake cafe on the middle floors, then Wallflowers
-Upstairs rooftop bar in early 2018 with Garden-of-Eden-themed cocktails
-reached via "a creaky wooden staircase" spiral. By late 2024 the florist
-downstairs has folded into the cafe (Wongnai reviewer NanNan, Oct 2024).
+Wallflowers began in June 2016 as Oneday Wallflowers — Bangkok specialty-
+coffee group Casa Lapin's "second location in the Old Town" (BK Magazine,
+8 June 2016) — opening inside a pair of vintage shophouses at 31-33 Soi
+Nana, "in what used to be the charming Pure Luck kombucha brewery." It grew
+upward through the building: a flower-and-cake cafe on the middle floors,
+then Wallflowers Upstairs rooftop bar in early 2018 with Garden-of-Eden-
+themed cocktails reached via "a creaky wooden staircase" spiral. By late
+2024 the florist downstairs had folded into the cafe (Wongnai reviewer
+NanNan, 27 Oct 2024).
 
-VERIFIED SIGNATURES — cafe: Le Boissom De Kanda 250฿ (Signature Drink Award
-2016), Dark Beer Cake 260฿ (Wongnai #1), Tamarind Coffee 250฿, Filter Coffee
-250฿, Thai Style/Americano/Thai Tea 150฿, Latte 130฿, cake slices from 150฿.
+VERIFIED SIGNATURES — cafe: Le Boisson de Kanda 250฿ (Signature Drink Award
+2016, per Daniel Food Diary; spelling "Boissom" in DFD silently corrected
+to standard French "Boisson"), Dark Beer Cake 260฿ (Wongnai member-
+recommended), Tamarind Coffee 250฿, Filter Coffee 250฿, Thai Style /
+Americano / Thai Tea 150฿, Latte 130฿, cake slices from 150฿.
 VERIFIED SIGNATURES — Upstairs: EDEN (Hendrick's, Aperol, elderflower,
 lychee, lemon), ROSY STRAIGHT BLUSH (vodka, Aperol, watermelon, passion-
-fruit, yuzu, vanilla), LOUISE (Bulleit rye, Martini Bianco, ginger, Fuji
-apple), NEGRONI.
+fruit, yuzu, vanilla), LOUISE (Bulleit Rye, Martini Bianco, ginger, Fuji
+apple), NEGRONI. (Asia Bars caption prints "Bullet's Rye Bourbon" — typo
+for "Bulleit Rye"; we use the correct brand name.)
 
 VOICE — soft-spoken and literary by day (the Perks-of-Being-a-Wallflower
 pun is owned), candlelit and convivial by night, vinyl jazz/RnB Fri & Sat.
@@ -264,18 +269,23 @@ html[data-mode="night"] .cursor-petal { mix-blend-mode: screen; }
 .breath { display: inline-block; transform-origin: center; animation: breath 5.4s ease-in-out infinite; }
 @keyframes breath { 0%,100% { transform: scale(1); } 50% { transform: scale(1.014); } }
 
-/* === Drop cap === */
+/* === Drop cap (illuminated, vintage-book) === */
 .dropcap::first-letter {
   font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
-  float: left; font-size: 5.2em; line-height: 0.88;
-  padding: 0.08em 0.10em 0 0; margin-top: 0.06em;
+  float: left; font-size: 6.4em; line-height: 0.82;
+  padding: 0.04em 0.14em 0 0; margin-top: 0.04em;
   color: var(--accent-strong);
-  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-strong) 100%);
+  background: linear-gradient(155deg, var(--accent) 0%, var(--accent-strong) 60%, var(--rose) 100%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   font-style: italic;
+  text-shadow: 0 1px 0 rgba(184,154,74,0.18);
+  filter: drop-shadow(0 2px 6px rgba(184,154,74,0.30));
+}
+html[data-mode="night"] .dropcap::first-letter {
+  filter: drop-shadow(0 0 14px rgba(212,168,74,0.55)) drop-shadow(0 2px 6px rgba(0,0,0,0.5));
 }
 
-/* === Menu card (worn paper) === */
+/* === Menu card (worn paper, with curl corner) === */
 .menu-card {
   position: relative; padding: 24px 24px 22px;
   background: var(--surface);
@@ -284,6 +294,18 @@ html[data-mode="night"] .cursor-petal { mix-blend-mode: screen; }
   box-shadow: var(--shadow);
   transition: transform 360ms cubic-bezier(0.22,1,0.36,1), box-shadow 360ms ease, border-color 360ms ease;
 }
+/* Paper-curl bottom-right corner — deepens on hover */
+.menu-card::after {
+  content:''; position: absolute; right: 0; bottom: 0; width: 28px; height: 28px; pointer-events: none;
+  border-bottom-right-radius: 6px;
+  background:
+    linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--ink) 18%, transparent) 50%, color-mix(in srgb, var(--ink) 6%, transparent) 70%, transparent 78%);
+  opacity: 0.55; transition: width 420ms cubic-bezier(0.22,1,0.36,1), height 420ms cubic-bezier(0.22,1,0.36,1), opacity 420ms ease;
+}
+.menu-card:hover::after { width: 42px; height: 42px; opacity: 0.85; }
+/* When .is-bar already has its own ::after for the cocktail glow, give the curl a different selector */
+.menu-card.is-bar::after { display: none; }
+.menu-card.is-bar { box-shadow: var(--shadow), 0 0 0 1px transparent inset; }
 .menu-card::before {
   content:''; position:absolute; inset:0; border-radius:6px; pointer-events:none;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.27 0 0 0 0 0.17 0 0 0 0 0.08 0 0 0 0.30 0'/></filter><rect width='100%25' height='100%25' filter='url(%23p)'/></svg>");
@@ -412,6 +434,9 @@ blockquote.pull { position: relative; padding: 6px 0 6px 24px; border-left: 2px 
 .bloom-petal { position: fixed; right: 24px; bottom: 24px; z-index: 90; pointer-events: none; opacity: 0; transform: translateY(40px) scale(0.4) rotate(-20deg); transition: opacity 900ms ease, transform 1400ms cubic-bezier(0.22,1,0.36,1); }
 .bloom-petal.is-blooming { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
 
+/* Pressed botanical ornament between sections */
+.ornament { display: block; width: clamp(180px, 30vw, 280px); height: auto; margin: 0 auto 22px; color: var(--accent-strong); opacity: 0.85; }
+
 /* Hide things in the wrong mode */
 [data-show="day"]   { display: block; }
 [data-show="night"] { display: none; }
@@ -454,6 +479,33 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
           <ellipse cx="0" cy="-22" rx="6" ry="14" transform="rotate(315)"/>
         </g>
         <circle r="9" fill="#D4A84A"/>
+      </g>
+    </symbol>
+
+    <!-- Pressed botanical decoration — flat daisy + small leaves, used as a section ornament -->
+    <symbol id="pressedDecor" viewBox="0 0 240 60">
+      <g stroke="currentColor" stroke-width="0.6" fill="none" opacity="0.55">
+        <path d="M0 30 C 40 26, 60 24, 88 30"/>
+        <path d="M152 30 C 180 24, 200 26, 240 30"/>
+      </g>
+      <g fill="currentColor" opacity="0.55">
+        <ellipse cx="78" cy="34" rx="3" ry="6" transform="rotate(-25 78 34)"/>
+        <ellipse cx="84" cy="28" rx="3" ry="6" transform="rotate(15 84 28)"/>
+        <ellipse cx="162" cy="34" rx="3" ry="6" transform="rotate(25 162 34)"/>
+        <ellipse cx="156" cy="28" rx="3" ry="6" transform="rotate(-15 156 28)"/>
+      </g>
+      <g transform="translate(120 30)">
+        <g fill="currentColor">
+          <ellipse cx="0" cy="-15" rx="3.2" ry="11"/>
+          <ellipse cx="0" cy="-15" rx="3.2" ry="11" transform="rotate(45)"/>
+          <ellipse cx="0" cy="-15" rx="3.2" ry="11" transform="rotate(90)"/>
+          <ellipse cx="0" cy="-15" rx="3.2" ry="11" transform="rotate(135)"/>
+          <ellipse cx="0" cy="-15" rx="3.2" ry="11" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-15" rx="3.2" ry="11" transform="rotate(225)"/>
+          <ellipse cx="0" cy="-15" rx="3.2" ry="11" transform="rotate(270)"/>
+          <ellipse cx="0" cy="-15" rx="3.2" ry="11" transform="rotate(315)"/>
+        </g>
+        <circle r="5" fill="#D4A84A"/>
       </g>
     </symbol>
 
@@ -519,7 +571,8 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
     <!-- src: https://danielfooddiary.com/wp-content/uploads/2019/11/wallflower2.jpg via Wongnai pair (verified by sitewide Wallflowers feature, day-mode hero) -->
     <img data-show="day"   src="images/wn-interior-vintage.jpg" alt="" class="w-full h-full object-cover" style="filter:saturate(0.92) contrast(1.06) brightness(0.92); object-position: center 55%;" loading="eager" fetchpriority="high"/>
     <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-10r.jpg (verified Wallflowers Upstairs feature, Dec 2019) -->
-    <img data-show="night" src="images/night-rooftop.jpg"     alt="" class="w-full h-full object-cover" style="filter:saturate(0.95) contrast(1.06); object-position: center 55%;" loading="eager"/>
+    <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-7r-1024x683.jpg (verified Wallflowers Upstairs bar interior, soft amber light) -->
+    <img data-show="night" src="images/night-bar-interior.jpg" alt="" class="w-full h-full object-cover" style="filter:saturate(1.02) contrast(1.08) brightness(0.85); object-position: center 55%;" loading="eager"/>
     <div class="absolute inset-0" style="background: var(--hero-tint); transition: background 1200ms ease;"></div>
   </div>
 
@@ -612,13 +665,14 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
   </div>
 
   <div class="wrap pt-20 pb-20 lg:pt-28 lg:pb-28 max-w-3xl mx-auto">
-    <p class="eyebrow mb-4 reveal">A small manifesto</p>
-    <h2 class="font-display mb-6 reveal" style="font-size: clamp(34px, 5.8vw, 64px); font-weight: 500;">
+    <svg class="ornament reveal" viewBox="0 0 240 60" aria-hidden="true"><use href="#pressedDecor"/></svg>
+    <p class="eyebrow mb-4 reveal" style="text-align:center;">A small manifesto</p>
+    <h2 class="font-display mb-6 reveal" style="font-size: clamp(34px, 5.8vw, 64px); font-weight: 500; text-align:center;">
       For the quiet ones — <em class="italic-display" style="color: var(--accent-strong);">the wallflowers</em>.
     </h2>
 
     <p class="dropcap reveal" style="font-size: 19px; line-height: 1.7; color: var(--ink-soft);">
-      <span data-text="day">Good things come to those who search. We started in 2016 as a florist tucked above an old kombucha brewery on Soi Nana, then grew upward — flowers on the walls, cake in the case, coffee from a single-origin filter. The whole building is the cafe now. Bring a book. Bring a friend. Bring no one at all.</span>
+      <span data-text="day">Good things come to those who search. We opened in June 2016 as Oneday Wallflowers, a flower shop tucked into the old Pure Luck kombucha brewery on Soi Nana — Casa Lapin's "second location in the Old Town." We grew upward from there: flowers on the walls, cake in the case, coffee from a single-origin filter. The whole building is the cafe now. Bring a book. Bring a friend. Bring no one at all.</span>
       <span data-text="night">When the cafe lamps come on at half-past five, the spiral staircase keeps climbing — past flower-tube chandeliers and fairy lights, past raw brick and timber, up to the rooftop garden. Garden-of-Eden cocktails, soft amber lighting, the slow turn of a vinyl record on a Friday night. Order the ROSY STRAIGHT BLUSH. Ask for a railing seat.</span>
     </p>
 
@@ -626,11 +680,11 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
       <span data-text="day">It used to be a florist; they brought the flower-arranging idea into a cafe that's perfumed with the scent of flowers.</span>
       <span data-text="night">Chinatown welcomes the rustic rooftop bar it never knew it needed.</span>
       <footer class="not-italic mt-2 text-sm" style="font-family:'Inter Tight',sans-serif; color: var(--ink-faint); letter-spacing:.06em;">
-        <span data-text="day">— Tazzjang Aey, Wongnai (Oct 2024, translated)</span>
-        <span data-text="night">— BK Magazine, Nov 2018</span>
+        <span data-text="day">— Tazzjang Aey, Wongnai (10 Oct 2024, translated from Thai)</span>
+        <span data-text="night">— BK Magazine, 12 Nov 2018</span>
       </footer>
-      <!-- SOURCE day: https://www.wongnai.com/restaurants/301356Nq-wallflowers-cafe (verified reviewer, verbatim Thai original) -->
-      <!-- SOURCE night: https://www.bkmagazine.com/bar/wallflowers-upstairs/ (verified press headline deck) -->
+      <!-- SOURCE day: https://www.wongnai.com/reviews/06ad1c18ee774a8ab2197395379f472e (verified reviewer Tazzjang Aey, dated 10 ต.ค. 2024; Thai original verbatim: "ในอดีตเขาเป็นร้านจัดดอกไม้เก่า เขาจึงเอาไอเดียการจัดดอกไม้มาทำคาเฟ่ที่อบอวนไปด้วยกลิ่นของดอกไม้") -->
+      <!-- SOURCE night: https://www.bkmagazine.com/bar/wallflowers-upstairs/ (verified BK Staff headline deck, dated 12 November 2018) -->
     </blockquote>
   </div>
 </section>
@@ -655,11 +709,11 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
       <article class="menu-card reveal">
         <svg class="wax-seal" viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="#A04040" stroke="#5C1F1F" stroke-width="1.5"/><text x="30" y="34" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" fill="#F4ECD8" font-size="11" font-weight="600">W</text><circle cx="30" cy="30" r="22" fill="none" stroke="#5C1F1F" stroke-width="0.5" stroke-dasharray="2 2"/></svg>
         <div class="flex justify-between items-baseline gap-3">
-          <h3><span class="underline-draw">Le Boissom De Kanda</span></h3>
+          <h3><span class="underline-draw">Le Boisson de Kanda</span></h3>
           <span class="price">฿250</span>
         </div>
-        <p>A carbonated espresso with notes of citrus, peach, and earl-grey for fragrance. Won the Signature Drink Award 2016 and remains the most-ordered drink on the menu.</p>
-        <!-- SOURCE: https://danielfooddiary.com/2019/11/19/wallflowerscafe/ (verbatim: "won the Signature Drink Award 2016 and is the most ordered one from their menu") -->
+        <p>A carbonated espresso with notes of citrus, peach, and earl-grey for fragrance. Reported to have won the Signature Drink Award 2016 and to be the most-ordered drink on the menu.</p>
+        <!-- SOURCE: https://danielfooddiary.com/2019/11/19/wallflowerscafe/ (verbatim: "This blend won the Signature Drink Award 2016 and is the most ordered one from their menu.") DFD prints the name as "Le Boissom De Kanda" — silently corrected here to the standard French "Le Boisson de Kanda" (boisson = drink). Award body not named in source; hedged copy. -->
       </article>
 
       <article class="menu-card reveal">
@@ -668,9 +722,9 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
           <h3><span class="underline-draw">Dark Beer Cake</span></h3>
           <span class="price">฿260</span>
         </div>
-        <p>Wongnai's #1 member pick. Dense, malty, finished with fresh fruit and edible petals.</p>
+        <p>The Wongnai member-recommended slice. Dense, malty, finished with fresh fruit and edible petals.</p>
         <span class="desc-thai thai">เค้กเบียร์ดำ</span>
-        <!-- SOURCE: https://www.wongnai.com/restaurants/301356Nq-wallflowers-cafe/menu (verified top member-recommended item, item id 75145415, ฿260) -->
+        <!-- SOURCE: https://www.wongnai.com/restaurants/301356Nq-wallflowers-cafe/menu (verified member-recommended item ("เมนูแนะนำโดยสมาชิก"), item id 75145415, ฿260) — softened from "#1" since there is no numeric rank in source. -->
       </article>
 
       <article class="menu-card reveal">
@@ -768,8 +822,8 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
           <h3><span class="underline-draw">LOUISE</span></h3>
           <span class="price">spirit</span>
         </div>
-        <p>Bulleit Rye Bourbon, Martini Bianco, ginger, fresh Fuji apple juice. Warm, slightly spicy. For colder evenings on the rooftop.</p>
-        <!-- SOURCE: https://www.asia-bars.com/2019/12/wallflowers-upstairs-roooftop-bar-in-bangkok/ -->
+        <p>Bulleit Rye, Martini Bianco, ginger, fresh Fuji apple juice. Warm, slightly spicy. For colder evenings on the rooftop.</p>
+        <!-- SOURCE: https://www.asia-bars.com/2019/12/wallflowers-upstairs-roooftop-bar-in-bangkok/ — caption prints "Bullet's Rye Bourbon" (typo + wrong category: Bulleit is the brand, Rye is the product). Corrected to "Bulleit Rye". -->
       </article>
 
       <article class="menu-card is-bar reveal">
@@ -830,6 +884,7 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
     <p class="text-center mt-9" style="font-size: 14px; color: var(--ink-faint); font-family:'Inter Tight',sans-serif;">
       Full menus on Linktree — <a class="underline" style="color: var(--accent-strong);" href="https://linktr.ee/wallflowersth" target="_blank" rel="noopener">food · coffee · cake · drinks bar</a>.
     </p>
+    <svg class="ornament reveal mt-10" viewBox="0 0 240 60" aria-hidden="true" style="color: var(--botanical);"><use href="#pressedDecor"/></svg>
   </div>
 </section>
 
@@ -1023,14 +1078,14 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
         <!-- SOURCE: https://www.bkmagazine.com/bar/wallflowers-upstairs/ verified headline deck -->
       </blockquote>
       <blockquote class="reveal" style="border-top: 1px solid var(--border); padding-top: 24px;">
-        <p class="italic-display" style="font-size: 22px; line-height: 1.35; color: var(--ink);">"Hidden &amp; vintage flower-themed cafe with full display of cakes."</p>
-        <footer class="mt-4 text-sm" style="font-family:'Inter Tight',sans-serif; color: var(--ink-faint); letter-spacing:.06em;">— Daniel Food Diary, Nov 2019</footer>
-        <!-- SOURCE: https://danielfooddiary.com/2019/11/19/wallflowerscafe/ verbatim headline -->
+        <p class="italic-display" style="font-size: 22px; line-height: 1.35; color: var(--ink);">"Hidden &amp; Vintage Flower-Themed Cafe With Full Display Of Cakes."</p>
+        <footer class="mt-4 text-sm" style="font-family:'Inter Tight',sans-serif; color: var(--ink-faint); letter-spacing:.06em;">— Daniel Food Diary, 19 Nov 2019</footer>
+        <!-- SOURCE: https://danielfooddiary.com/2019/11/19/wallflowerscafe/ verbatim headline (Title Case, trimmed of " Near Yaowarat Chinatown" tail) -->
       </blockquote>
       <blockquote class="reveal" style="border-top: 1px solid var(--border); padding-top: 24px;">
-        <p class="italic-display" style="font-size: 22px; line-height: 1.35; color: var(--ink);">"Soft amber lighting throughout, creating a romantic yet relaxing atmosphere."</p>
-        <footer class="mt-4 text-sm" style="font-family:'Inter Tight',sans-serif; color: var(--ink-faint); letter-spacing:.06em;">— Time Out Bangkok</footer>
-        <!-- SOURCE: https://www.timeout.com/bangkok/bars/wallflowers-upstairs verbatim -->
+        <p class="italic-display" style="font-size: 22px; line-height: 1.35; color: var(--ink);">"Soft amber lighting is used throughout, creating a romantic yet relaxing atmosphere."</p>
+        <footer class="mt-4 text-sm" style="font-family:'Inter Tight',sans-serif; color: var(--ink-faint); letter-spacing:.06em;">— Kaweewat Siwanartwong, Time Out Bangkok</footer>
+        <!-- SOURCE: https://www.timeout.com/bangkok/bars/wallflowers-upstairs verbatim ("Soft amber lighting is used throughout, creating a romantic yet relaxing atmosphere at the same time."), trimmed of "at the same time" tail. -->
       </blockquote>
     </div>
   </div>
@@ -1083,6 +1138,7 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
               <tr><th class="text-left font-medium pr-6 pb-1.5" style="color: var(--ink); font-weight:500;">Cafe</th><td class="pb-1.5 tabular-nums" style="color: var(--ink-soft);">10:00 — 18:00 · daily</td></tr>
               <tr><th class="text-left font-medium pr-6" style="color: var(--ink); font-weight:500;">Upstairs Bar</th><td class="tabular-nums" style="color: var(--ink-soft);">17:30 — 00:00 · daily</td></tr>
             </tbody></table>
+            <p class="mt-2 text-[12px]" style="color: var(--ink-faint);">Hours per the cafe's Facebook About. Other listings (Wongnai, Time Out) sometimes show longer hours — call ahead or check <a class="underline" style="color: var(--ink-faint);" href="https://linktr.ee/wallflowersth" target="_blank" rel="noopener">Linktree</a> for the current week.</p>
           </dd>
         </div>
         <div class="reveal">

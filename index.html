@@ -53,6 +53,9 @@ PRIMARY CTA — Reserve via LINE: https://lin.ee/ME6TMdA
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter+Tight:wght@400;500;600;700&family=Noto+Serif+Thai:wght@400;500;600&family=Caveat:wght@400;600&display=swap" />
+<link rel="preload" as="image" type="image/webp" href="images/optimized/wn-interior-vintage-1600.webp" media="(min-width: 769px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" href="images/optimized/wn-interior-vintage-800.webp" media="(max-width: 768px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" href="images/optimized/night-bar-interior-1600.webp" media="(min-width: 769px)" fetchpriority="low">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -569,10 +572,16 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
   <!-- Photo backdrop -->
   <div class="absolute inset-0 -z-10" aria-hidden="true">
     <!-- src: https://danielfooddiary.com/wp-content/uploads/2019/11/wallflower2.jpg via Wongnai pair (verified by sitewide Wallflowers feature, day-mode hero) -->
-    <img data-show="day"   src="images/wn-interior-vintage.jpg" alt="" class="w-full h-full object-cover" style="filter:saturate(0.92) contrast(1.06) brightness(0.92); object-position: center 55%;" loading="eager" fetchpriority="high"/>
+    <picture data-show="day">
+    <source type="image/webp" srcset="images/optimized/wn-interior-vintage-800.webp 800w, images/optimized/wn-interior-vintage-1600.webp 1600w" sizes="100vw">
+    <img src="images/optimized/wn-interior-vintage-1600.jpg" alt="" class="w-full h-full object-cover" style="filter:saturate(0.92) contrast(1.06) brightness(0.92); object-position: center 55%;" width="1600" height="901" loading="eager" fetchpriority="high" decoding="async">
+  </picture>
     <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-10r.jpg (verified Wallflowers Upstairs feature, Dec 2019) -->
     <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-7r-1024x683.jpg (verified Wallflowers Upstairs bar interior, soft amber light) -->
-    <img data-show="night" src="images/night-bar-interior.jpg" alt="" class="w-full h-full object-cover" style="filter:saturate(1.02) contrast(1.08) brightness(0.85); object-position: center 55%;" loading="eager"/>
+    <picture data-show="night">
+    <source type="image/webp" srcset="images/optimized/night-bar-interior-800.webp 800w, images/optimized/night-bar-interior-1600.webp 1600w" sizes="100vw">
+    <img src="images/optimized/night-bar-interior-1600.jpg" alt="" class="w-full h-full object-cover" style="filter:saturate(1.02) contrast(1.08) brightness(0.85); object-position: center 55%;" width="1024" height="683" loading="eager" fetchpriority="high" decoding="async">
+  </picture>
     <div class="absolute inset-0" style="background: var(--hero-tint); transition: background 1200ms ease;"></div>
   </div>
 
@@ -908,84 +917,84 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
       <figure data-show="day" class="polaroid reveal" style="--rot:-2.2deg; transform: rotate(-2.2deg);">
         <span class="washi tl" aria-hidden="true"></span>
         <!-- src: https://danielfooddiary.com/wp-content/uploads/2019/11/wallflower2.jpg via Wongnai verified pair, mid-floor day interior -->
-        <img src="images/wn-interior-vintage.jpg" alt="The sunlit middle floor — vintage shophouse, wood window, plants and books."/>
+        <picture><source type="image/webp" srcset="images/optimized/wn-interior-vintage-800.webp 800w, images/optimized/wn-interior-vintage-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/wn-interior-vintage-1600.jpg" alt="The sunlit middle floor — vintage shophouse, wood window, plants and books." width="1600" height="901" / loading="lazy" decoding="async"></picture>
         <figcaption>middle-floor sunlight</figcaption>
       </figure>
 
       <figure data-show="day" class="polaroid reveal" style="--rot:1.6deg; transform: rotate(1.6deg);">
         <span class="washi tr" aria-hidden="true"></span>
         <!-- src: https://img.wongnai.com/p/1920x0/2025/03/23/dd7981dd05ea4f6c95b1d4bb19aabfaa.jpg verified Wongnai 2025 user upload, the miniature house model -->
-        <img src="images/wn-miniature-house.jpg" alt="A miniature model of a house — a small detail regulars come back for."/>
+        <picture><source type="image/webp" srcset="images/optimized/wn-miniature-house-800.webp 800w, images/optimized/wn-miniature-house-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/wn-miniature-house-1600.jpg" alt="A miniature model of a house — a small detail regulars come back for." width="1108" height="1477" / loading="lazy" decoding="async"></picture>
         <figcaption>the miniature house</figcaption>
       </figure>
 
       <figure data-show="day" class="polaroid reveal" style="--rot:-1.5deg; transform: rotate(-1.5deg);">
         <span class="washi tl" aria-hidden="true"></span>
         <!-- src: https://img.wongnai.com/p/1920x0/2024/10/29/a4b5ff1f5f924307961b9c90707f3282.jpg verified Wongnai user upload, cake with flowers -->
-        <img src="images/wn-cake-with-flowers.jpg" alt="A slice from the cake case, decorated with fresh flowers."/>
+        <picture><source type="image/webp" srcset="images/optimized/wn-cake-with-flowers-800.webp 800w, images/optimized/wn-cake-with-flowers-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/wn-cake-with-flowers-1600.jpg" alt="A slice from the cake case, decorated with fresh flowers." width="1600" height="900" / loading="lazy" decoding="async"></picture>
         <figcaption>edible petals on cake</figcaption>
       </figure>
 
       <figure data-show="day" class="polaroid reveal" style="--rot:2.0deg; transform: rotate(2.0deg);">
         <span class="washi tr" aria-hidden="true"></span>
         <!-- src: https://img.wongnai.com/p/1920x0/2024/10/10/3fa121d896c74d8e95baa883520470d5.jpg verified Wongnai user upload, latte art -->
-        <img src="images/wn-cappuccino-latte-art.jpg" alt="A cappuccino with rosette latte art — house blend."/>
+        <picture><source type="image/webp" srcset="images/optimized/wn-cappuccino-latte-art-800.webp 800w, images/optimized/wn-cappuccino-latte-art-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/wn-cappuccino-latte-art-1600.jpg" alt="A cappuccino with rosette latte art — house blend." width="1600" height="900" / loading="lazy" decoding="async"></picture>
         <figcaption>house cappuccino</figcaption>
       </figure>
 
       <figure data-show="day" class="polaroid reveal" style="--rot:-2.4deg; transform: rotate(-2.4deg);">
         <span class="washi tl" aria-hidden="true"></span>
         <!-- src: https://img.wongnai.com/p/1920x0/2024/10/18/c4cfd1341f3b4f33ba7b1f0dc0318b66.jpg verified Wongnai, cold brew with ice cream and flowers -->
-        <img src="images/wn-coldbrew-icecream-flowers.jpg" alt="A cold brew served with ice cream and a fresh flower garnish."/>
+        <picture><source type="image/webp" srcset="images/optimized/wn-coldbrew-icecream-flowers-800.webp 800w, images/optimized/wn-coldbrew-icecream-flowers-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/wn-coldbrew-icecream-flowers-1600.jpg" alt="A cold brew served with ice cream and a fresh flower garnish." width="1440" height="1920" / loading="lazy" decoding="async"></picture>
         <figcaption>cold brew + ice cream</figcaption>
       </figure>
 
       <figure data-show="day" class="polaroid reveal" style="--rot:1.4deg; transform: rotate(1.4deg);">
         <span class="washi tr" aria-hidden="true"></span>
         <!-- src: https://img.wongnai.com/p/1920x0/2024/08/12/211f7655726b457f8fe34fcc232dee4e.jpg verified Wongnai, vintage furniture day -->
-        <img src="images/wn-vintage-furniture.jpg" alt="A round wooden table with vintage chairs and dried-flower arrangements."/>
+        <picture><source type="image/webp" srcset="images/optimized/wn-vintage-furniture-800.webp 800w, images/optimized/wn-vintage-furniture-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/wn-vintage-furniture-1600.jpg" alt="A round wooden table with vintage chairs and dried-flower arrangements." width="1440" height="1920" / loading="lazy" decoding="async"></picture>
         <figcaption>retro rattan corner</figcaption>
       </figure>
 
       <figure data-show="day" class="polaroid reveal" style="--rot:-1.9deg; transform: rotate(-1.9deg);">
         <span class="washi tl" aria-hidden="true"></span>
         <!-- src: https://img.wongnai.com/p/1920x0/2024/10/27/2288274207c84a7a9ba90009f0dfe28b.jpg verified Wongnai shophouse interior -->
-        <img src="images/wn-day-interior-2.jpg" alt="Sunlight through a wooden shophouse window onto plants."/>
+        <picture><source type="image/webp" srcset="images/optimized/wn-day-interior-2-800.webp 800w, images/optimized/wn-day-interior-2-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/wn-day-interior-2-1600.jpg" alt="Sunlight through a wooden shophouse window onto plants." width="1600" height="900" / loading="lazy" decoding="async"></picture>
         <figcaption>old shophouse, dressed up</figcaption>
       </figure>
 
       <figure data-show="day" class="polaroid reveal" style="--rot:2.2deg; transform: rotate(2.2deg);">
         <span class="washi tr" aria-hidden="true"></span>
         <!-- src: https://img.wongnai.com/p/1920x0/2024/10/27/5e5ef5e6a73b4f22bb4ef9bc83b7695b.jpg verified Wongnai cake + coffee pair -->
-        <img src="images/wn-cake-coffee-pair.jpg" alt="A slice of cake next to coffee — the standing daytime order."/>
+        <picture><source type="image/webp" srcset="images/optimized/wn-cake-coffee-pair-800.webp 800w, images/optimized/wn-cake-coffee-pair-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/wn-cake-coffee-pair-1600.jpg" alt="A slice of cake next to coffee — the standing daytime order." width="1600" height="901" / loading="lazy" decoding="async"></picture>
         <figcaption>the standing order</figcaption>
       </figure>
 
       <figure data-show="day" class="polaroid reveal" style="--rot:-1.2deg; transform: rotate(-1.2deg);">
         <span class="washi tl" aria-hidden="true"></span>
         <!-- src: https://img.wongnai.com/p/1920x0/2024/10/29/0b5098a9a0db46cba26ffb95a1eee029.jpg verified Wongnai detail -->
-        <img src="images/wn-flowers-detail.jpg" alt="Detail of dried-flower arrangement on a windowsill."/>
+        <picture><source type="image/webp" srcset="images/optimized/wn-flowers-detail-800.webp 800w, images/optimized/wn-flowers-detail-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/wn-flowers-detail-1600.jpg" alt="Detail of dried-flower arrangement on a windowsill." width="1600" height="900" / loading="lazy" decoding="async"></picture>
         <figcaption>dried-flower detail</figcaption>
       </figure>
 
       <figure data-show="day" class="polaroid reveal" style="--rot:1.8deg; transform: rotate(1.8deg);">
         <span class="washi tr" aria-hidden="true"></span>
         <!-- src: https://img.wongnai.com/p/1920x0/2024/10/10/c0bdf942f5b24721ad67be609454b6e6.jpg verified Wongnai day interior 2 -->
-        <img src="images/wn-vintage-detail.jpg" alt="Another vintage detail — a corner with plants, books, lamp."/>
+        <picture><source type="image/webp" srcset="images/optimized/wn-vintage-detail-800.webp 800w, images/optimized/wn-vintage-detail-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/wn-vintage-detail-1600.jpg" alt="Another vintage detail — a corner with plants, books, lamp." width="1600" height="901" / loading="lazy" decoding="async"></picture>
         <figcaption>plants &amp; paperbacks</figcaption>
       </figure>
 
       <figure data-show="day" class="polaroid reveal" style="--rot:-2.0deg; transform: rotate(-2.0deg);">
         <span class="washi tl" aria-hidden="true"></span>
         <!-- src: https://img.wongnai.com/p/1920x0/2024/10/10/a27bd369ef55454ebcc1ed9678c9d0a9.jpg verified Wongnai cake with edible flowers -->
-        <img src="images/wn-cake-edible-flowers.jpg" alt="Cake garnished with edible petals."/>
+        <picture><source type="image/webp" srcset="images/optimized/wn-cake-edible-flowers-800.webp 800w, images/optimized/wn-cake-edible-flowers-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/wn-cake-edible-flowers-1600.jpg" alt="Cake garnished with edible petals." width="1600" height="900" / loading="lazy" decoding="async"></picture>
         <figcaption>cake from the case</figcaption>
       </figure>
 
       <figure data-show="day" class="polaroid reveal" style="--rot:2.4deg; transform: rotate(2.4deg);">
         <span class="washi tr" aria-hidden="true"></span>
         <!-- src: https://img.wongnai.com/p/1920x0/2024/08/12/f1e9bf0bc8f74c0684a7c88ce967445d.jpg verified Wongnai dessert -->
-        <img src="images/wn-dessert.jpg" alt="A small dessert plate."/>
+        <picture><source type="image/webp" srcset="images/optimized/wn-dessert-800.webp 800w, images/optimized/wn-dessert-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/wn-dessert-1600.jpg" alt="A small dessert plate." width="1440" height="1920" / loading="lazy" decoding="async"></picture>
         <figcaption>dessert of the week</figcaption>
       </figure>
 
@@ -993,70 +1002,70 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
       <figure data-show="night" class="polaroid reveal" style="--rot:-1.8deg; transform: rotate(-1.8deg);">
         <span class="washi tl" aria-hidden="true"></span>
         <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-10r.jpg verified Asia Bars Wallflowers Upstairs feature -->
-        <img src="images/night-rooftop.jpg" alt="The rooftop bar at dusk — fairy lights, rattan chairs, a roof over Chinatown."/>
+        <picture><source type="image/webp" srcset="images/optimized/night-rooftop-800.webp 800w, images/optimized/night-rooftop-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/night-rooftop-1600.jpg" alt="The rooftop bar at dusk — fairy lights, rattan chairs, a roof over Chinatown." width="1600" height="1067" / loading="lazy" decoding="async"></picture>
         <figcaption>the rooftop at dusk</figcaption>
       </figure>
 
       <figure data-show="night" class="polaroid reveal" style="--rot:1.5deg; transform: rotate(1.5deg);">
         <span class="washi tr" aria-hidden="true"></span>
         <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-7r-1024x683.jpg verified Asia Bars -->
-        <img src="images/night-bar-interior.jpg" alt="Inside the bar — soft amber light, flowers and bottles."/>
+        <picture><source type="image/webp" srcset="images/optimized/night-bar-interior-800.webp 800w, images/optimized/night-bar-interior-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/night-bar-interior-1600.jpg" alt="Inside the bar — soft amber light, flowers and bottles." width="1024" height="683" / loading="lazy" decoding="async"></picture>
         <figcaption>soft amber light</figcaption>
       </figure>
 
       <figure data-show="night" class="polaroid reveal" style="--rot:-2.1deg; transform: rotate(-2.1deg);">
         <span class="washi tl" aria-hidden="true"></span>
         <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-5.jpg verified Asia Bars - Rosy Straight Blush signature -->
-        <img src="images/night-rosy-blush.jpg" alt="The ROSY STRAIGHT BLUSH cocktail — vodka, Aperol, watermelon, passion fruit, yuzu, vanilla."/>
+        <picture><source type="image/webp" srcset="images/optimized/night-rosy-blush-800.webp 800w, images/optimized/night-rosy-blush-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/night-rosy-blush-1600.jpg" alt="The ROSY STRAIGHT BLUSH cocktail — vodka, Aperol, watermelon, passion fruit, yuzu, vanilla." width="1200" height="1800" / loading="lazy" decoding="async"></picture>
         <figcaption>ROSY STRAIGHT BLUSH</figcaption>
       </figure>
 
       <figure data-show="night" class="polaroid reveal" style="--rot:1.7deg; transform: rotate(1.7deg);">
         <span class="washi tr" aria-hidden="true"></span>
         <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-3.jpg verified Asia Bars - EDEN cocktail -->
-        <img src="images/night-eden.jpg" alt="The EDEN cocktail — Hendrick's, Aperol, elderflower, lychee, lemon."/>
+        <picture><source type="image/webp" srcset="images/optimized/night-eden-800.webp 800w, images/optimized/night-eden-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/night-eden-1600.jpg" alt="The EDEN cocktail — Hendrick's, Aperol, elderflower, lychee, lemon." width="1200" height="1800" / loading="lazy" decoding="async"></picture>
         <figcaption>EDEN</figcaption>
       </figure>
 
       <figure data-show="night" class="polaroid reveal" style="--rot:-1.4deg; transform: rotate(-1.4deg);">
         <span class="washi tl" aria-hidden="true"></span>
         <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-6.jpg verified Asia Bars - LOUISE -->
-        <img src="images/night-louise.jpg" alt="The LOUISE — Bulleit rye, Martini Bianco, ginger, Fuji apple."/>
+        <picture><source type="image/webp" srcset="images/optimized/night-louise-800.webp 800w, images/optimized/night-louise-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/night-louise-1600.jpg" alt="The LOUISE — Bulleit rye, Martini Bianco, ginger, Fuji apple." width="1200" height="1800" / loading="lazy" decoding="async"></picture>
         <figcaption>LOUISE</figcaption>
       </figure>
 
       <figure data-show="night" class="polaroid reveal" style="--rot:2.0deg; transform: rotate(2.0deg);">
         <span class="washi tr" aria-hidden="true"></span>
         <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-4.jpg verified Asia Bars - Negroni -->
-        <img src="images/night-negroni.jpg" alt="A NEGRONI on the rooftop bar."/>
+        <picture><source type="image/webp" srcset="images/optimized/night-negroni-800.webp 800w, images/optimized/night-negroni-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/night-negroni-1600.jpg" alt="A NEGRONI on the rooftop bar." width="1200" height="1800" / loading="lazy" decoding="async"></picture>
         <figcaption>NEGRONI, on the rooftop</figcaption>
       </figure>
 
       <figure data-show="night" class="polaroid reveal" style="--rot:-2.3deg; transform: rotate(-2.3deg);">
         <span class="washi tl" aria-hidden="true"></span>
         <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-11r.jpg verified Asia Bars -->
-        <img src="images/night-bar-dim.jpg" alt="Dim corner of the bar — flower-tube chandelier overhead."/>
+        <picture><source type="image/webp" srcset="images/optimized/night-bar-dim-800.webp 800w, images/optimized/night-bar-dim-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/night-bar-dim-1600.jpg" alt="Dim corner of the bar — flower-tube chandelier overhead." width="1600" height="1067" / loading="lazy" decoding="async"></picture>
         <figcaption>flower-tube chandelier</figcaption>
       </figure>
 
       <figure data-show="night" class="polaroid reveal" style="--rot:1.3deg; transform: rotate(1.3deg);">
         <span class="washi tr" aria-hidden="true"></span>
         <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-8.jpg verified Asia Bars -->
-        <img src="images/night-rooftop-2.jpg" alt="Another corner of the rooftop bar at night."/>
+        <picture><source type="image/webp" srcset="images/optimized/night-rooftop-2-800.webp 800w, images/optimized/night-rooftop-2-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/night-rooftop-2-1600.jpg" alt="Another corner of the rooftop bar at night." width="1600" height="1067" / loading="lazy" decoding="async"></picture>
         <figcaption>railing seat</figcaption>
       </figure>
 
       <figure data-show="night" class="polaroid reveal" style="--rot:-1.6deg; transform: rotate(-1.6deg);">
         <span class="washi tl" aria-hidden="true"></span>
         <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-9.jpg verified Asia Bars -->
-        <img src="images/night-rooftop-3.jpg" alt="Rooftop garden setting — exposed brick, plants and timber."/>
+        <picture><source type="image/webp" srcset="images/optimized/night-rooftop-3-800.webp 800w, images/optimized/night-rooftop-3-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/night-rooftop-3-1600.jpg" alt="Rooftop garden setting — exposed brick, plants and timber." width="1600" height="1067" / loading="lazy" decoding="async"></picture>
         <figcaption>raw brick &amp; timber</figcaption>
       </figure>
 
       <figure data-show="night" class="polaroid reveal" style="--rot:2.1deg; transform: rotate(2.1deg);">
         <span class="washi tr" aria-hidden="true"></span>
         <!-- src: https://www.asia-bars.com/wp-content/uploads/2019/12/Wallflowers-1.jpg verified Asia Bars -->
-        <img src="images/night-cocktail-1.jpg" alt="A garden-themed cocktail caught in soft amber light."/>
+        <picture><source type="image/webp" srcset="images/optimized/night-cocktail-1-800.webp 800w, images/optimized/night-cocktail-1-1600.webp 1600w" sizes="(max-width:768px) 100vw, 33vw"><img src="images/optimized/night-cocktail-1-1600.jpg" alt="A garden-themed cocktail caught in soft amber light." width="1200" height="1800" / loading="lazy" decoding="async"></picture>
         <figcaption>house cocktail</figcaption>
       </figure>
     </div>
@@ -1259,146 +1268,4 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
     var initial = (p.m >= openBar || p.m < openCafe) ? 'night' : 'day';
     setMode(initial, false);
   })();
-  document.querySelectorAll('[data-mode-btn]').forEach(function(b){
-    b.addEventListener('click', function(){ setMode(b.dataset.modeBtn, true); });
-  });
-
-  /* ===== LIVE STATUS PILL ===== */
-  function updateStatus(){
-    var el = document.getElementById('liveStatus'); if (!el) return;
-    var p = bkkParts();
-    var inCafe = p.m >= toMin(CAFE.open) && p.m < toMin(CAFE.close);
-    var inBar  = p.m >= toMin(BAR.open)  && p.m < toMin(BAR.close);
-    var msg;
-    if (inCafe && inBar) msg = 'Cafe open · Upstairs bar opens at 17:30';
-    else if (inCafe)     msg = 'Cafe open · closes at 18:00';
-    else if (inBar)      msg = 'Upstairs Bar open · last call near midnight';
-    else if (p.m < toMin(CAFE.open)) msg = 'Closed · cafe opens at 10:00 (Bangkok time)';
-    else                 msg = 'Closed · bar reopens tomorrow at 17:30';
-    var isOpen = inCafe || inBar;
-    el.textContent = msg;
-    el.classList.toggle('is-open', isOpen);
-    el.classList.toggle('is-closed', !isOpen);
-  }
-
-  /* ===== WORDMARK INK-BLEED REVEAL ===== */
-  function revealWordmark(){
-    var w = document.querySelector('.wordmark'); if (w) w.classList.add('is-revealed');
-  }
-
-  /* ===== LENIS SMOOTH SCROLL ===== */
-  var lenis = null;
-  if (window.Lenis && !matchMedia('(prefers-reduced-motion: reduce)').matches){
-    lenis = new Lenis({ duration: 1.2, easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smoothWheel: true });
-    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-  }
-
-  /* ===== GSAP SCROLLTRIGGER REGISTER ===== */
-  if (window.gsap && window.ScrollTrigger){
-    gsap.registerPlugin(ScrollTrigger);
-    if (lenis){ lenis.on('scroll', ScrollTrigger.update); }
-
-    // Reveals
-    gsap.utils.toArray('.reveal').forEach(function(el, i){
-      gsap.fromTo(el, { y: 24, opacity: 0 }, {
-        y: 0, opacity: 1, duration: 0.95, ease: 'power2.out', delay: 0.04 * (i % 6),
-        scrollTrigger: { trigger: el, start: 'top 88%' }
-      });
-    });
-
-    // Hero parallax petals
-    gsap.utils.toArray('.petal').forEach(function(p){
-      var depth = parseFloat(p.dataset.depth || '0.2');
-      gsap.to(p, { yPercent: 60 * depth, scrollTrigger: { trigger: '#manifesto', start: 'top bottom', end: 'top top', scrub: 0.6 }});
-    });
-
-    // Scroll-tied vine grow
-    var path = document.getElementById('vinePath');
-    if (path){
-      var len = path.getTotalLength();
-      path.style.strokeDasharray = len + ' ' + len;
-      path.style.strokeDashoffset = len;
-      gsap.to(path, {
-        strokeDashoffset: 0, ease: 'none',
-        scrollTrigger: { trigger: '#manifesto', start: 'top 80%', end: 'bottom 20%', scrub: 0.5 }
-      });
-      gsap.utils.toArray('.vineBloom').forEach(function(b, i){
-        gsap.fromTo(b, { scale: 0, opacity: 0, transformOrigin: '50% 50%' }, {
-          scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(1.4)',
-          scrollTrigger: { trigger: b, start: 'top 75%' }
-        });
-      });
-    }
-
-    // Polaroid scrapbook stagger
-    ScrollTrigger.batch('.polaroid', {
-      start: 'top 88%',
-      onEnter: function(els){
-        gsap.fromTo(els, { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.75, stagger: 0.08, ease: 'power2.out' });
-      }
-    });
-  }
-
-  /* ===== DRIED-PETAL CURSOR TRAIL ===== */
-  var supportsHover = matchMedia('(hover: hover)').matches;
-  var reduceMotion  = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (supportsHover && !reduceMotion && window.gsap){
-    var cursor = document.getElementById('cursorPetal');
-    var lastTrail = 0;
-    document.addEventListener('mousemove', function(e){
-      if (cursor){
-        gsap.to(cursor, { x: e.clientX - 11, y: e.clientY - 16, rotation: '+=0.5', duration: 0.5, ease: 'power2.out' });
-      }
-      var now = performance.now();
-      if (now - lastTrail < 90) return;
-      lastTrail = now;
-      var trail = cursor.cloneNode(true);
-      trail.id = '';
-      trail.removeAttribute('class');
-      trail.style.cssText = 'position:fixed; left:0; top:0; pointer-events:none; z-index:79; opacity:.85; color: var(--rose); width:16px; height:24px;';
-      trail.style.transform = 'translate('+(e.clientX-8)+'px,'+(e.clientY-12)+'px) rotate('+(Math.random()*180-90)+'deg)';
-      document.body.appendChild(trail);
-      gsap.to(trail, { opacity: 0, y: '+=24', rotation: '+=40', duration: 1.4, ease: 'power1.out', onComplete: function(){ trail.remove(); }});
-    }, { passive: true });
-  }
-
-  /* ===== HEADER NAV CLICKS — Lenis-aware smooth ===== */
-  document.querySelectorAll('a[href^="#"]').forEach(function(a){
-    a.addEventListener('click', function(e){
-      var id = a.getAttribute('href').slice(1);
-      var target = document.getElementById(id); if (!target) return;
-      e.preventDefault();
-      if (lenis) lenis.scrollTo(target, { offset: -60, duration: 1.3 });
-      else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-
-  /* ===== EASTER EGG — type "wallflower" ===== */
-  var typed = '';
-  var bloom = document.getElementById('bloomPetal');
-  document.addEventListener('keydown', function(e){
-    if (e.key.length === 1) {
-      typed = (typed + e.key.toLowerCase()).slice(-20);
-      if (typed.includes('wallflower')) {
-        bloom.classList.add('is-blooming');
-        setTimeout(function(){ bloom.classList.remove('is-blooming'); }, 3400);
-        typed = '';
-      }
-    }
-  });
-
-  /* ===== INIT ===== */
-  document.addEventListener('DOMContentLoaded', function(){
-    updateStatus();
-    setTimeout(revealWordmark, 250);
-    document.querySelectorAll('[data-cta]').forEach(function(n){
-      n.addEventListener('click', function(){ try { console.info('cta_click', n.dataset.cta); } catch(_){} }, { passive: true });
-    });
-  });
-})();
-</script>
-
-</body>
-</html>
+  document.querySelectorAll('[d

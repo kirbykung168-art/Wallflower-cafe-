@@ -12,3 +12,12 @@ login-then-deploy.bat
 open-site.bat
 open-repo.bat
 deploy.log
+
+# Original full-size source images — kept on local disk for re-encoding, NOT shipped.
+# The site only references images/optimized/* (WebP + JPG fallback at 1600w / 800w).
+images/*.jpg
+images/*.jpeg
+images/*.png
+!images/favicon.svg
+!images/optimized/
+

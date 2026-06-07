@@ -109,9 +109,9 @@ PRIMARY CTA — Reserve via LINE: https://lin.ee/ME6TMdA
   --border: rgba(58,42,30,0.16);
   --shadow: 0 1px 1px rgba(58,42,30,0.04), 0 8px 24px -12px rgba(58,42,30,0.22);
   --sky: linear-gradient(180deg, #EFE0B0 0%, #F4ECD8 40%, #EADFC2 100%);
-  --hero-tint: linear-gradient(180deg, rgba(31,42,24,0.35) 0%, rgba(31,42,24,0.55) 55%, rgba(20,12,8,0.78) 100%);
+  --hero-tint: linear-gradient(170deg, rgba(31,42,24,0.20) 0%, rgba(31,42,24,0.55) 55%, rgba(20,12,8,0.85) 100%), linear-gradient(95deg, rgba(20,12,8,0.55) 0%, rgba(20,12,8,0.15) 45%, transparent 70%);
   --hero-text: #F4ECD8;
-  --hero-text-soft: rgba(244,236,216,0.86);
+  --hero-text-soft: rgba(244,236,216,0.88);
   --paper-noise-opacity: 0.20;
   --paper-noise-mix: multiply;
   --body-weight: 400;
@@ -134,9 +134,9 @@ html[data-mode="night"] {
   --border: rgba(212,168,74,0.20);
   --shadow: 0 1px 1px rgba(0,0,0,0.40), 0 12px 32px -10px rgba(0,0,0,0.66);
   --sky: linear-gradient(180deg, #1F1633 0%, #0F0C18 45%, #080611 100%);
-  --hero-tint: linear-gradient(180deg, rgba(15,12,24,0.45) 0%, rgba(15,12,24,0.60) 55%, rgba(8,6,17,0.88) 100%);
+  --hero-tint: linear-gradient(170deg, rgba(15,12,24,0.35) 0%, rgba(15,12,24,0.60) 55%, rgba(8,6,17,0.92) 100%), linear-gradient(95deg, rgba(8,6,17,0.55) 0%, rgba(8,6,17,0.18) 45%, transparent 70%);
   --hero-text: #F4ECD8;
-  --hero-text-soft: rgba(244,236,216,0.86);
+  --hero-text-soft: rgba(244,236,216,0.88);
   --paper-noise-opacity: 0.10;
   --paper-noise-mix: screen;
   --body-weight: 450;
@@ -169,7 +169,7 @@ h1,h2,h3,h4 {
 em, .italic-display { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; }
 .thai { font-family: 'Noto Serif Thai', serif; }
 .hand { font-family: 'Caveat', cursive; }
-.eyebrow { text-transform: uppercase; letter-spacing: 0.28em; font-size: 11px; font-weight: 600; font-family: 'Inter Tight', sans-serif; color: var(--accent-strong); }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.32em; font-size: 12px; font-weight: 700; font-family: 'Inter Tight', sans-serif; color: var(--accent-strong); }
 .smallcaps { font-variant-caps: all-small-caps; letter-spacing: 0.12em; }
 .serif-num { font-feature-settings: "onum" 1, "lnum" 0; }
 
@@ -242,6 +242,9 @@ html[data-mode="night"] .mode-toggle__btn[aria-pressed="true"] { color: #0F0C18;
 
 /* === Wordmark SVG ink-bleed === */
 .wordmark { width: 100%; max-width: 920px; height: auto; }
+@media (max-width: 640px) {
+  .wordmark { max-width: 86vw; }
+}
 .wordmark .stroke { fill: none; stroke: var(--wordmark-stroke); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round;
   stroke-dasharray: 1600; stroke-dashoffset: 1600;
   filter: url(#inkbleed);
@@ -275,8 +278,8 @@ html[data-mode="night"] .cursor-petal { mix-blend-mode: screen; }
 /* === Drop cap (illuminated, vintage-book) === */
 .dropcap::first-letter {
   font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600;
-  float: left; font-size: 6.4em; line-height: 0.82;
-  padding: 0.04em 0.14em 0 0; margin-top: 0.04em;
+  float: left; font-size: 6.4em; line-height: 0.78;
+  padding: 0 0.12em 0 0; margin-top: 0.02em;
   color: var(--accent-strong);
   background: linear-gradient(155deg, var(--accent) 0%, var(--accent-strong) 60%, var(--rose) 100%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
@@ -288,7 +291,7 @@ html[data-mode="night"] .dropcap::first-letter {
   filter: drop-shadow(0 0 14px rgba(212,168,74,0.55)) drop-shadow(0 2px 6px rgba(0,0,0,0.5));
 }
 
-/* === Menu card (worn paper, with curl corner) === */
+/* === Menu card (worn paper, with curl corner + 4% noise) === */
 .menu-card {
   position: relative; padding: 24px 24px 22px;
   background: var(--surface);
@@ -296,6 +299,19 @@ html[data-mode="night"] .dropcap::first-letter {
   border-radius: 6px;
   box-shadow: var(--shadow);
   transition: transform 360ms cubic-bezier(0.22,1,0.36,1), box-shadow 360ms ease, border-color 360ms ease;
+  isolation: isolate;
+  overflow: hidden;
+}
+/* 4% paper-grain noise layer inside each card */
+.menu-card > * { position: relative; z-index: 1; }
+.menu-card::before {
+  content:''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.27 0 0 0 0 0.17 0 0 0 0 0.08 0 0 0 0.35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.08; mix-blend-mode: multiply;
+}
+html[data-mode="night"] .menu-card::before {
+  opacity: 0.05; mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.83 0 0 0 0 0.66 0 0 0 0 0.29 0 0 0 0.40 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 /* Paper-curl bottom-right corner — deepens on hover */
 .menu-card::after {
@@ -309,12 +325,6 @@ html[data-mode="night"] .dropcap::first-letter {
 /* When .is-bar already has its own ::after for the cocktail glow, give the curl a different selector */
 .menu-card.is-bar::after { display: none; }
 .menu-card.is-bar { box-shadow: var(--shadow), 0 0 0 1px transparent inset; }
-.menu-card::before {
-  content:''; position:absolute; inset:0; border-radius:6px; pointer-events:none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.27 0 0 0 0 0.17 0 0 0 0 0.08 0 0 0 0.30 0'/></filter><rect width='100%25' height='100%25' filter='url(%23p)'/></svg>");
-  opacity: 0.10; mix-blend-mode: multiply; border-radius: 6px;
-}
-html[data-mode="night"] .menu-card::before { mix-blend-mode: screen; opacity: 0.06; }
 .menu-card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 2px 4px rgba(0,0,0,0.06), 0 24px 44px -20px rgba(184,154,74,0.40); }
 .menu-card h3 { color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 22px; line-height: 1.15; }
 .menu-card h3 .underline-draw {
@@ -373,6 +383,16 @@ html[data-mode="night"] .menu-card.is-bar:hover::after { opacity: 1; }
 .polaroid .washi.tl { top: -7px; left: 14px; transform: rotate(-18deg); }
 .polaroid .washi.tr { top: -7px; right: 14px; transform: rotate(14deg); background-color: var(--botanical-soft); }
 .polaroid:hover { transform: translateY(-6px) rotate(var(--rot,0deg)) scale(1.02); box-shadow: 0 2px 4px rgba(0,0,0,0.08), 0 24px 38px -16px rgba(0,0,0,0.30); }
+
+/* Polaroid rotation randomization — applied via nth-child so the wall reads as hand-arranged */
+.scrapbook > .polaroid:nth-child(8n+1) { transform: rotate(-4.2deg); --rot: -4.2deg; }
+.scrapbook > .polaroid:nth-child(8n+2) { transform: rotate(2.6deg);  --rot: 2.6deg; }
+.scrapbook > .polaroid:nth-child(8n+3) { transform: rotate(-1.4deg); --rot: -1.4deg; }
+.scrapbook > .polaroid:nth-child(8n+4) { transform: rotate(3.8deg);  --rot: 3.8deg; }
+.scrapbook > .polaroid:nth-child(8n+5) { transform: rotate(-2.9deg); --rot: -2.9deg; }
+.scrapbook > .polaroid:nth-child(8n+6) { transform: rotate(1.1deg);  --rot: 1.1deg; }
+.scrapbook > .polaroid:nth-child(8n+7) { transform: rotate(-3.5deg); --rot: -3.5deg; }
+.scrapbook > .polaroid:nth-child(8n)   { transform: rotate(2.2deg);  --rot: 2.2deg; }
 
 /* RSVP letter card */
 .rsvp {
@@ -616,8 +636,8 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
       <span data-text="night">A creaky wooden staircase rises through three floors to a rooftop garden over Chinatown. Garden-of-Eden cocktails, vinyl on Fridays and Saturdays, <em>open until midnight</em>.</span>
     </p>
 
-    <p class="mb-9 italic-display text-[clamp(22px,2.6vw,30px)]" style="color: var(--wordmark-fill); font-weight:500; text-shadow: 0 2px 14px rgba(0,0,0,0.55);">
-      A cafe by day, <span class="breath">a bar by night.</span>
+    <p class="mb-9 italic-display" style="color: var(--wordmark-fill); font-weight:500; text-shadow: 0 2px 14px rgba(0,0,0,0.55); font-size: clamp(13px, 1.2vw, 16px); letter-spacing: 0.32em; text-transform: uppercase; opacity: 0.92;">
+      A cafe by day &nbsp;·&nbsp; <span class="breath">a bar by night</span>
     </p>
 
     <div class="flex flex-wrap gap-3 mb-9">
@@ -638,7 +658,7 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
       <span class="opacity-50">·</span>
       <span><strong style="color: var(--hero-text);">33K</strong> followers</span>
       <span class="opacity-50 hidden md:inline">·</span>
-      <span class="hidden md:inline italic-display" style="color: var(--hero-text); font-style:italic;">"hip hangout for the young &amp; beautiful"<span class="ml-1 opacity-60" style="font-style:normal;">— Tripadvisor</span></span>
+      <span class="hidden md:inline italic-display" style="color: var(--hero-text); font-style:italic;">&ldquo;hip hangout for the young &amp; beautiful&rdquo;<span class="ml-1 opacity-60" style="font-style:normal;">— Tripadvisor</span></span>
     </div>
     <p id="liveStatus" class="mt-5 inline-flex items-center text-sm status-dot" aria-live="polite" style="color: var(--hero-text-soft); font-family:'Inter Tight',sans-serif; text-shadow: 0 1px 6px rgba(0,0,0,0.4);">Checking the hour in Bangkok…</p>
   </div>
@@ -1079,20 +1099,21 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
 <!-- =========================== PRESS QUOTES =========================== -->
 <section class="relative grain" style="background: var(--bg);">
   <div class="wrap py-16 lg:py-24">
+    <svg class="ornament reveal" viewBox="0 0 240 60" aria-hidden="true" style="margin-bottom: 18px;"><use href="#pressedDecor"/></svg>
     <p class="eyebrow mb-8 text-center reveal">Said in the press</p>
     <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
       <blockquote class="reveal" style="border-top: 1px solid var(--border); padding-top: 24px;">
-        <p class="italic-display" style="font-size: 22px; line-height: 1.35; color: var(--ink);">"Chinatown welcomes the rustic rooftop bar it never knew it needed."</p>
+        <p class="italic-display" style="font-size: 22px; line-height: 1.35; color: var(--ink);">&ldquo;Chinatown welcomes the rustic rooftop bar it never knew it needed.&rdquo;</p>
         <footer class="mt-4 text-sm" style="font-family:'Inter Tight',sans-serif; color: var(--ink-faint); letter-spacing:.06em;">— BK Magazine, Nov 2018</footer>
         <!-- SOURCE: https://www.bkmagazine.com/bar/wallflowers-upstairs/ verified headline deck -->
       </blockquote>
       <blockquote class="reveal" style="border-top: 1px solid var(--border); padding-top: 24px;">
-        <p class="italic-display" style="font-size: 22px; line-height: 1.35; color: var(--ink);">"Hidden &amp; Vintage Flower-Themed Cafe With Full Display Of Cakes."</p>
+        <p class="italic-display" style="font-size: 22px; line-height: 1.35; color: var(--ink);">&ldquo;Hidden &amp; Vintage Flower-Themed Cafe With Full Display Of Cakes.&rdquo;</p>
         <footer class="mt-4 text-sm" style="font-family:'Inter Tight',sans-serif; color: var(--ink-faint); letter-spacing:.06em;">— Daniel Food Diary, 19 Nov 2019</footer>
         <!-- SOURCE: https://danielfooddiary.com/2019/11/19/wallflowerscafe/ verbatim headline (Title Case, trimmed of " Near Yaowarat Chinatown" tail) -->
       </blockquote>
       <blockquote class="reveal" style="border-top: 1px solid var(--border); padding-top: 24px;">
-        <p class="italic-display" style="font-size: 22px; line-height: 1.35; color: var(--ink);">"Soft amber lighting is used throughout, creating a romantic yet relaxing atmosphere."</p>
+        <p class="italic-display" style="font-size: 22px; line-height: 1.35; color: var(--ink);">&ldquo;Soft amber lighting is used throughout, creating a romantic yet relaxing atmosphere.&rdquo;</p>
         <footer class="mt-4 text-sm" style="font-family:'Inter Tight',sans-serif; color: var(--ink-faint); letter-spacing:.06em;">— Kaweewat Siwanartwong, Time Out Bangkok</footer>
         <!-- SOURCE: https://www.timeout.com/bangkok/bars/wallflowers-upstairs verbatim ("Soft amber lighting is used throughout, creating a romantic yet relaxing atmosphere at the same time."), trimmed of "at the same time" tail. -->
       </blockquote>
@@ -1104,6 +1125,12 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
 <section class="relative grain" style="background: var(--bg-2);">
   <div class="wrap py-20 lg:py-24 max-w-3xl mx-auto">
     <div class="rsvp reveal">
+      <!-- Centered wax seal at the top of the card -->
+      <svg aria-hidden="true" viewBox="0 0 80 80" style="display:block; width:64px; height:64px; margin: -52px auto 14px; filter: drop-shadow(0 6px 10px rgba(120,40,30,0.45));">
+        <circle cx="40" cy="40" r="34" fill="#A04040" stroke="#5C1F1F" stroke-width="2"/>
+        <circle cx="40" cy="40" r="28" fill="none" stroke="#5C1F1F" stroke-width="0.6" stroke-dasharray="2 3" opacity="0.7"/>
+        <text x="40" y="50" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" fill="#F4ECD8" font-size="28" font-weight="600">W</text>
+      </svg>
       <p class="eyebrow text-center mb-6" style="color: var(--accent-strong);">— with our compliments —</p>
       <h2><span class="italic-display">Please</span> reserve</h2>
       <p class="intro">
@@ -1144,8 +1171,8 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
           <dt class="eyebrow mb-1">Hours</dt>
           <dd>
             <table class="text-[15px]"><tbody>
-              <tr><th class="text-left font-medium pr-6 pb-1.5" style="color: var(--ink); font-weight:500;">Cafe</th><td class="pb-1.5 tabular-nums" style="color: var(--ink-soft);">10:00 — 18:00 · daily</td></tr>
-              <tr><th class="text-left font-medium pr-6" style="color: var(--ink); font-weight:500;">Upstairs Bar</th><td class="tabular-nums" style="color: var(--ink-soft);">17:30 — 00:00 · daily</td></tr>
+              <tr><th class="text-left font-medium pr-6 pb-1.5" style="color: var(--ink); font-weight:500;">Cafe</th><td class="pb-1.5 tabular-nums" style="color: var(--ink-soft);">10:00 – 18:00 · daily</td></tr>
+              <tr><th class="text-left font-medium pr-6" style="color: var(--ink); font-weight:500;">Upstairs Bar</th><td class="tabular-nums" style="color: var(--ink-soft);">17:30 – 00:00 · daily</td></tr>
             </tbody></table>
             <p class="mt-2 text-[12px]" style="color: var(--ink-faint);">Hours per the cafe's Facebook About. Other listings (Wongnai, Time Out) sometimes show longer hours — call ahead or check <a class="underline" style="color: var(--ink-faint);" href="https://linktr.ee/wallflowersth" target="_blank" rel="noopener">Linktree</a> for the current week.</p>
           </dd>
@@ -1194,7 +1221,7 @@ html[data-mode="night"] [data-text="night"] { display: inline; }
     </div>
     <div>
       <p class="eyebrow mb-2.5">Hours</p>
-      <p class="text-[14px] leading-relaxed">Cafe · 10:00 — 18:00<br/>Upstairs Bar · 17:30 — 00:00<br/><span style="color: var(--ink-faint);">Live music · Fri &amp; Sat</span></p>
+      <p class="text-[14px] leading-relaxed">Cafe · 10:00 – 18:00<br/>Upstairs Bar · 17:30 – 00:00<br/><span style="color: var(--ink-faint);">Live music · Fri &amp; Sat</span></p>
     </div>
     <div>
       <p class="eyebrow mb-2.5">Social</p>
